@@ -3,6 +3,7 @@
 
 -- Daily ranking table (resets daily)
 -- Tracks rankings per region and quiz format for each day
+-- Each attempt is recorded separately (no UNIQUE constraint)
 DROP TABLE IF EXISTS ranking_daily;
 CREATE TABLE ranking_daily (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -11,8 +12,7 @@ CREATE TABLE ranking_daily (
   region TEXT NOT NULL DEFAULT 'all',
   format TEXT NOT NULL DEFAULT 'flag-to-name',
   date TEXT NOT NULL DEFAULT (date('now', 'localtime')),
-  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-  UNIQUE(nickname, region, format, date)
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
 );
 
 -- All-time ranking table (keeps top scores)

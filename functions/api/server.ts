@@ -105,12 +105,10 @@ app.post('/api/ranking', zValidator('json', scoreSchema), async (c) => {
 
     // 新しいテーブルが存在するか確認
     try {
-      // 日次ランキングに登録（UPSERT: 同じニックネーム・地域・形式・日付なら更新）
+      // 日次ランキングに登録（各挑戦ごとに記録）
       await c.env.DB.prepare(
         `INSERT INTO ranking_daily (nickname, score, region, format, date, created_at) 
-         VALUES (?, ?, ?, ?, ?, ?)
-         ON CONFLICT(nickname, region, format, date) 
-         DO UPDATE SET score = MAX(score, excluded.score), created_at = excluded.created_at`
+         VALUES (?, ?, ?, ?, ?, ?)`
       ).bind(sanitizedNickname, score, region, format, today, now).run();
 
       // 全期間ランキングの処理
