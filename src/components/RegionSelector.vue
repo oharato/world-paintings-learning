@@ -42,7 +42,7 @@ const normalizeContinentMap: Record<string, string> = {
 };
 
 // 利用可能な大陸のリスト
-const _availableContinents = computed(() => {
+const availableContinents = computed(() => {
   const continents = new Set<string>();
   countriesStore.countries.forEach((country) => {
     if (country.continent && country.continent !== 'N/A') {
@@ -54,7 +54,7 @@ const _availableContinents = computed(() => {
 });
 
 // 表示用の大陸名を取得
-const _getDisplayContinentName = (continent: string) => {
+const getDisplayContinentName = (continent: string) => {
   const continentMap: Record<string, string> = {
     Africa: t.value.region.africa,
     Asia: t.value.region.asia,
@@ -67,12 +67,12 @@ const _getDisplayContinentName = (continent: string) => {
   return continentMap[continent] || continent;
 };
 
-const _selectedValue = computed({
+const selectedValue = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value),
 });
 
-const _displayLabel = computed(() => props.label || t.value.quizSetup.region);
+const displayLabel = computed(() => props.label || t.value.quizSetup.region);
 </script>
 
 <template>

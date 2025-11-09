@@ -19,7 +19,7 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -45,6 +45,21 @@
       "indentWidth": 2
     }
   },
+  "overrides": [
+    {
+      "includes": ["**/*.vue"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off"
+          }
+        }
+      },
+      "assist": {
+        "enabled": false
+      }
+    }
+  ],
   "assist": {
     "enabled": true,
     "actions": {

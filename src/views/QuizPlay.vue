@@ -38,7 +38,7 @@ const checkImagesLoaded = () => {
   }
 };
 
-const _onImageLoad = () => {
+const onImageLoad = () => {
   loadedImagesCount.value++;
   checkImagesLoaded();
 };
@@ -192,7 +192,7 @@ const handleAnswer = (option: Country, index: number) => {
 };
 
 // マウスホバー時に選択状態を更新
-const _handleMouseEnter = (index: number) => {
+const handleMouseEnter = (index: number) => {
   selectedIndex.value = index;
 };
 </script>

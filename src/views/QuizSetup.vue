@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import AppButton from '../components/AppButton.vue';
+import QuizFormatSelector from '../components/QuizFormatSelector.vue';
+import RegionSelector from '../components/RegionSelector.vue';
 import { useTranslation } from '../composables/useTranslation';
 import { useCountriesStore } from '../store/countries';
 import { type QuizFormat, type QuizRegion, useQuizStore } from '../store/quiz';
@@ -81,7 +84,7 @@ const startQuiz = () => {
 };
 
 // ニックネーム入力時にエラーをクリア
-const _clearNicknameError = () => {
+const clearNicknameError = () => {
   if (nicknameError.value) {
     nicknameError.value = '';
   }

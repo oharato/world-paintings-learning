@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import CountryDetailCard from '../components/CountryDetailCard.vue';
+import FlagCard from '../components/FlagCard.vue';
+import LazyImage from '../components/LazyImage.vue';
 import { useTranslation } from '../composables/useTranslation';
 import type { Country } from '../store/countries';
 import { useCountriesStore } from '../store/countries';
@@ -33,7 +36,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
   }
 };
 
-const _availableContinents = computed(() => {
+const availableContinents = computed(() => {
   const continents = new Set<string>();
   countriesStore.countries.forEach((country) => {
     if (country.continent && country.continent !== 'N/A') {
@@ -50,7 +53,7 @@ const filteredCountries = computed<Country[]>(() => {
   return countriesStore.countries.filter((country) => country.continent === selectedRegion.value);
 });
 
-const _currentCountry = computed(() => {
+const currentCountry = computed(() => {
   if (filteredCountries.value.length === 0) {
     return null;
   }
@@ -102,11 +105,11 @@ const prevCountry = () => {
   }
 };
 
-const _toggleFlip = () => {
+const toggleFlip = () => {
   isFlipped.value = !isFlipped.value;
 };
 
-const _goToCountry = (index: number) => {
+const goToCountry = (index: number) => {
   isFlipped.value = false;
   currentIndex.value = index;
 };

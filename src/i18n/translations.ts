@@ -116,7 +116,7 @@ export const translations: Record<Language, Translations> = {
       backToHome: '< トップページに戻る',
     },
     home: {
-      title: '国旗ゲーム',
+      title: '国旗学習ゲーム',
       startQuiz: 'クイズに挑戦する',
       study: '国旗を学習する',
       viewRanking: 'ランキングを見る',
@@ -224,7 +224,7 @@ export const translations: Record<Language, Translations> = {
       backToHome: '< Back to Home',
     },
     home: {
-      title: 'National Flag Game',
+      title: 'World Flags Learning Game',
       startQuiz: 'Start Quiz',
       study: 'Study Flags',
       viewRanking: 'View Ranking',

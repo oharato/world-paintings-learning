@@ -3,6 +3,7 @@ import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useTranslation } from '../composables/useTranslation';
 import { type QuizFormat, type RankingType, useRankingStore } from '../store/ranking';
+import { formatDateTime } from '../utils/formatters';
 
 const route = useRoute();
 const router = useRouter();

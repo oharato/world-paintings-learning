@@ -36,7 +36,7 @@ describe('Home.vue', () => {
       },
     });
 
-    expect(wrapper.find('h1').text()).toBe('国旗ゲーム');
+    expect(wrapper.find('h1').text()).toBe('国旗学習ゲーム');
   });
 
   it('言語選択ドロップダウンが表示される', () => {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import AppButton from '../components/AppButton.vue';
 import { useTranslation } from '../composables/useTranslation';
 import { useCountriesStore } from '../store/countries';
 import { useQuizStore } from '../store/quiz';
@@ -22,7 +23,7 @@ onMounted(() => {
   rankingStore.submitScore(quizStore.nickname, quizStore.finalScore, quizStore.quizRegion, quizStore.quizFormat);
 });
 
-const _goToRanking = () => {
+const goToRanking = () => {
   // クイズ設定をURLパラメータとしてランキング画面に渡す
   router.push({
     path: '/ranking',
@@ -34,22 +35,22 @@ const _goToRanking = () => {
   });
 };
 
-const _goToHome = () => {
+const goToHome = () => {
   router.push('/');
 };
 
 // 回答履歴から選択肢のCountryオブジェクトを取得するヘルパー
-const _getCountryById = (id: string) => {
+const getCountryById = (id: string) => {
   return countriesStore.countries.find((c) => c.id === id);
 };
 
 // クイズ形式の表示名を取得
-const _getQuizFormatLabel = computed(() => {
+const getQuizFormatLabel = computed(() => {
   return quizStore.quizFormat === 'flag-to-name' ? t.value.quizFormat.flagToName : t.value.quizFormat.nameToFlag;
 });
 
 // 地域の表示名を取得
-const _getRegionLabel = (region: string) => {
+const getRegionLabel = (region: string) => {
   const regionMap: Record<string, () => string> = {
     all: () => t.value.region.all,
     Africa: () => t.value.region.africa,

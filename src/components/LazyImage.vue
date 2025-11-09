@@ -51,7 +51,7 @@ onUnmounted(() => {
   }
 });
 
-const _handleLoad = () => {
+const handleLoad = () => {
   isLoaded.value = true;
 };
 </script>
