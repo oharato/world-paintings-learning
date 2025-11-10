@@ -1,1 +1,17 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# フォーマット
+echo "Running formatter..."
+npm run format
+
+# リンター（自動修正）
+echo "Running linter..."
+npm run lint:fix
+
+# テスト実行
+echo "Running tests..."
+npm run test
+
+# ステージングされたファイルの最終チェック
 npx lint-staged

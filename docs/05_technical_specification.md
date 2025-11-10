@@ -331,10 +331,37 @@ npm run format       # フォーマットのみ
 
 #### Git Pre-commit Hooks
 *   **ツール**: **husky** + **lint-staged**
-*   **目的**: コミット前に自動的にコード品質チェックとフォーマットを実行
+*   **目的**: コミット前に自動的にコード品質チェック、フォーマット、テストを実行
 *   **設定ファイル**: 
     *   `.husky/pre-commit`: フック実行スクリプト
     *   `package.json`: lint-staged設定
+
+**pre-commitフックの処理フロー:**
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 1. フォーマット
+echo "Running formatter..."
+npm run format
+
+# 2. リンター（自動修正）
+echo "Running linter..."
+npm run lint:fix
+
+# 3. テスト実行
+echo "Running tests..."
+npm run test
+
+# 4. ステージングされたファイルの最終チェック
+npx lint-staged
+```
+
+**実行内容:**
+1. **フォーマット**: 全ファイルをBiomeでフォーマット
+2. **リンター**: 全ファイルをチェックし、自動修正可能な問題を修正
+3. **テスト実行**: 全127件のテストを実行（失敗時はコミット中断）
+4. **lint-staged**: ステージングされたファイルの最終確認
 
 **lint-staged設定:**
 ```json
@@ -349,9 +376,21 @@ npm run format       # フォーマットのみ
 
 **動作:**
 1. `git commit`実行時に自動的にトリガー
-2. ステージングされたファイルに対してBiomeを実行
-3. 自動修正可能な問題は修正してコミット
-4. 修正不可能なエラーがある場合はコミットを中断
+2. 全ファイルのフォーマットとリンターを実行
+3. 全テスト（127件）を実行
+4. ステージングされたファイルの最終チェック
+5. すべて成功した場合のみコミットを許可
+
+**メリット:**
+- コミット前に品質が保証される
+- 壊れたコードがリポジトリに入らない
+- テストが失敗するコードはコミットできない
+- チーム開発でのコード品質が統一される
+
+**注意点:**
+- テスト実行に数秒かかるため、コミットに時間がかかる
+- テストが失敗するとコミットできない（意図的な挙動）
+- 緊急時は `git commit --no-verify` でフックをスキップ可能
 
 **セットアップ:**
 ```bash
@@ -379,10 +418,10 @@ npm run test:coverage     # カバレッジ計測
 - ユーティリティテスト: `src/utils/__tests__/`
 - バックエンドテスト: `functions/api/__tests__/`
 
-**総テスト数: 113件** (2024年11月時点)
+**総テスト数: 127件** (2025年11月時点)
 - ストアテスト: 32件
 - コンポーネントテスト: 11件
-- ビューテスト: 44件
+- ビューテスト: 58件 (Ranking.test.ts 14件を含む)
 - ユーティリティテスト: 16件
 - バックエンドテスト: 10件
 
@@ -391,6 +430,119 @@ npm run test:coverage     # カバレッジ計測
 *   **設定ファイル**: `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
 *   **型チェック**: `vue-tsc` によるビルド時型チェック
 *   **Workers型定義**: `@cloudflare/workers-types` でCloudflare環境の型サポート
+
+---
+
+## 12. タイムゾーンと国際化の仕様
+
+### 12.1. タイムゾーン管理
+
+#### 基本方針
+アプリケーション全体で**日本時間（JST, UTC+9）**を基準とします。
+
+#### データベース（Cloudflare D1）
+*   **ranking_daily.date**: `date('now', '+9 hours')` で日本時間の日付を保存
+*   **ranking_daily.created_at**: `datetime('now')` でUTC時刻を保存
+*   **ranking_all_time.created_at**: `datetime('now')` でUTC時刻を保存
+
+#### APIサーバー（functions/api/server.ts）
+
+**ランキング登録:**
+```typescript
+// 日本時間の日付でランキングデータを登録
+await c.env.DB.prepare(
+  `INSERT INTO ranking_daily (nickname, score, region, format, date, created_at) 
+   VALUES (?, ?, ?, ?, date('now', '+9 hours'), ?)`
+)
+.bind(sanitizedNickname, score, region, format, now)
+.run();
+```
+
+**ランキング取得:**
+```typescript
+// 日本時間の日付でフィルタリング
+query = `SELECT nickname, score, created_at FROM ranking_daily 
+         WHERE region = ? AND format = ? AND date = date('now', '+9 hours')
+         ORDER BY score DESC, created_at ASC LIMIT ?`;
+```
+
+#### フロントエンド（日時表示）
+
+**`src/utils/formatters.ts`:**
+- **日本語版**: `2025-11-10 08:43:54` (タイムゾーン表示なし)
+- **英語版**: `2025-11-10 08:43:54 JST` (タイムゾーン表示あり)
+
+```typescript
+export function formatDateTime(isoString: string): string {
+  const date = new Date(isoString);
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Asia/Tokyo', // 日本時間で統一
+  };
+  
+  if (countriesStore.currentLanguage === 'ja') {
+    // タイムゾーン表示なし
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+  } else {
+    // JST表示あり
+    return `${year}-${month}-${day} ${hour}:${minute}:${second} JST`;
+  }
+}
+```
+
+### 12.2. 言語設定の永続化
+
+#### 基本方針
+ユーザーの言語設定を**localStorage**で永続化し、ページリロード後も設定を維持します。
+
+#### 実装（src/store/countries.ts）
+
+**初期化:**
+```typescript
+function getInitialLanguage(): Language {
+  if (typeof window === 'undefined') return 'ja'; // SSR対応
+  const saved = localStorage.getItem('language');
+  return (saved === 'en' || saved === 'ja') ? saved : 'ja';
+}
+
+export const useCountriesStore = defineStore('countries', {
+  state: () => ({
+    currentLanguage: getInitialLanguage(), // localStorageから読み込み
+  }),
+});
+```
+
+**言語変更:**
+```typescript
+setLanguage(lang: Language) {
+  if (this.currentLanguage !== lang) {
+    this.currentLanguage = lang;
+    // localStorageに保存
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
+    this.fetchCountries(true);
+  }
+}
+```
+
+**動作:**
+1. 初回訪問: デフォルトで日本語
+2. 言語変更: `localStorage.setItem('language', 'ja' | 'en')`
+3. ページリロード: `localStorage.getItem('language')` から復元
+4. 全ページで言語設定が保持される
+
+#### SSR対応
+`typeof window === 'undefined'` でサーバーサイド実行時の判定を行い、エラーを防止します。
+
+---
+
 ```
 
 ````

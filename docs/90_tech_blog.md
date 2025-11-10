@@ -891,9 +891,9 @@ npx @biomejs/biome init
 **課題と対処:**
 当初、セキュリティチェック用の正規表現（制御文字検出）やテストファイルからのエクスポートでエラーが発生しました。これらは意図的な実装だったため、`biome.json`でルールを無効化することで解決しました。
 
-### Git Pre-commit Hooksの導入
+### Git Pre-commit Hooksの導入と強化
 
-コード品質を自動的に維持するため、コミット前に自動的にリンター・フォーマッターを実行する仕組みを構築しました。
+コード品質を自動的に維持するため、コミット前に自動的にリンター・フォーマッター・テストを実行する仕組みを構築しました。
 
 **使用ツール:**
 - **husky**: Git hooksを簡単に管理するツール
@@ -911,8 +911,24 @@ npx husky init
 
 **設定内容:**
 
-`.husky/pre-commit` ファイル:
+`.husky/pre-commit` ファイル（強化版）:
 ```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 1. フォーマット
+echo "Running formatter..."
+npm run format
+
+# 2. リンター（自動修正）
+echo "Running linter..."
+npm run lint:fix
+
+# 3. テスト実行
+echo "Running tests..."
+npm run test
+
+# 4. ステージングされたファイルの最終チェック
 npx lint-staged
 ```
 
@@ -927,17 +943,39 @@ npx lint-staged
 }
 ```
 
-**動作フロー:**
+**動作フロー（強化版）:**
 1. `git commit` を実行
 2. huskyがpre-commitフックを起動
-3. lint-stagedがステージングされたファイルを検出
-4. Biomeでリンティング・フォーマットを実行
-5. エラーがなければコミット完了、あればブロック
+3. **全ファイルをフォーマット**（Biome）
+4. **全ファイルをリンティング＆自動修正**（Biome）
+5. **全テスト（127件）を実行**（Vitest）
+6. lint-stagedがステージングされたファイルを最終チェック
+7. すべて成功すればコミット完了、いずれか失敗すればブロック
+
+**メリット:**
+- コミット時に品質が自動保証される
+- テストが失敗するコードはコミットできない
+- チーム開発でコード品質が統一される
+- 壊れたコードがリポジトリに入らない
 
 **実際の動作例:**
 
 ```bash
 $ git commit -m "feat: add new feature"
+Running formatter...
+✔ 57 files formatted
+
+Running linter...
+✔ 57 files checked
+
+Running tests...
+✔ 127 tests passed
+
+npx lint-staged
+✔ Preparing lint-staged...
+✔ Running tasks...
+✔ Applying modifications...
+✔ Cleaning up...
 ✔ Backed up original state in git stash
 ✔ Running tasks for staged files...
 ✔ Applying modifications from tasks...
@@ -1296,6 +1334,173 @@ AIとの協業は、開発者がより創造的なタスクに集中できる可
 *   **コード品質**: Biome (linter & formatter)
 *   **PWA**: vite-plugin-pwa, Workbox
 *   **CI/CD**: GitHub Actions
+
+---
+
+## 追加のトラブルシューティング: タイムゾーンと言語設定の永続化
+
+開発を進める中で、ランキング機能と言語設定に関する2つの重要な問題が発見されました。
+
+### 1. ランキングのタイムゾーン問題
+
+#### 問題の発見
+クイズ完了後、ランキングにスコアを登録しているにもかかわらず、ランキングページでデータが表示されないという問題が発生しました。
+
+#### 原因の特定
+調査の結果、以下の問題が明らかになりました：
+
+1. **登録時**: JavaScriptの`new Date().toISOString()`を使用してUTC時刻で日付を生成
+2. **取得時**: SQLiteの`date('now', 'localtime')`でローカル時刻を使用
+3. **不整合**: Cloudflare WorkersはUTCで動作するため、日本時間（JST）との9時間のズレが発生
+
+例：
+- 日本時間 2025-11-10 08:00 にスコア登録
+- データベースには `2025-11-09` として保存（UTC 23:00）
+- ランキング取得時は `2025-11-10` のデータを検索
+- 結果：データが見つからない
+
+#### 解決策
+登録時と取得時の両方で**日本時間（JST）**を基準にするように統一しました：
+
+**`functions/api/server.ts`の修正:**
+
+```typescript
+// 登録時: date('now', '+9 hours')で日本時間の日付を使用
+await c.env.DB.prepare(
+  `INSERT INTO ranking_daily (nickname, score, region, format, date, created_at) 
+   VALUES (?, ?, ?, ?, date('now', '+9 hours'), ?)`
+)
+.bind(sanitizedNickname, score, region, format, now)
+.run();
+
+// 取得時: date('now', '+9 hours')で日本時間の日付でフィルタリング
+query = `SELECT nickname, score, created_at FROM ranking_daily 
+         WHERE region = ? AND format = ? AND date = date('now', '+9 hours')
+         ORDER BY score DESC, created_at ASC LIMIT ?`;
+```
+
+**既存データの修正:**
+```sql
+UPDATE ranking_daily 
+SET date = date(created_at, '+9 hours') 
+WHERE date < date('now', '+9 hours');
+```
+
+### 2. 言語設定の永続化
+
+#### 問題の発見
+英語版のどのページでもリロードすると日本語版に戻ってしまい、ユーザー体験が悪化していました。
+
+#### 検討したアプローチ
+
+**選択肢:**
+1. **localStorage** (採用)
+   - メリット: ページリロードしても永続化、ドメイン全体で共有
+   - デメリット: サーバーサイドでは使えない
+   
+2. **クエリパラメータ**
+   - メリット: URLで言語を共有可能、SEO対応
+   - デメリット: すべてのページで管理が複雑、URLが長くなる
+
+3. **Cookie**
+   - メリット: サーバーサイドでも利用可能
+   - デメリット: PWAでは不要、複雑
+
+**決定:** このアプリはPWAでクライアントサイドメインなので、**localStorage**が最適と判断しました。
+
+#### 実装内容
+
+**`src/store/countries.ts`の修正:**
+
+```typescript
+// localStorageから言語設定を読み込む
+function getInitialLanguage(): Language {
+  if (typeof window === 'undefined') return 'ja'; // SSR対応
+  const saved = localStorage.getItem('language');
+  return (saved === 'en' || saved === 'ja') ? saved : 'ja';
+}
+
+export const useCountriesStore = defineStore('countries', {
+  state: () => ({
+    countries: [] as Country[],
+    loading: false,
+    error: null as string | null,
+    currentLanguage: getInitialLanguage(), // localStorageから読み込み
+  }),
+  actions: {
+    setLanguage(lang: Language) {
+      if (this.currentLanguage !== lang) {
+        this.currentLanguage = lang;
+        // localStorageに保存
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('language', lang);
+        }
+        this.fetchCountries(true);
+      }
+    },
+  },
+});
+```
+
+**動作:**
+- 初回訪問: デフォルトで日本語
+- 言語変更: localStorageに保存（キー: `'language'`, 値: `'ja'` または `'en'`）
+- ページリロード: localStorageから言語設定を復元
+- 全ページで言語設定が保持される
+
+### 3. 日時表示のタイムゾーン統一
+
+ランキングの登録日時表示も日本時間に統一しました：
+
+**`src/utils/formatters.ts`の修正:**
+
+```typescript
+// 英語版も日本時間（JST）で表示
+export function formatDateTime(isoString: string): string {
+  const countriesStore = useCountriesStore();
+  const date = new Date(isoString);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Asia/Tokyo', // 日本時間で統一
+  };
+
+  if (countriesStore.currentLanguage === 'ja') {
+    // 日本語: タイムゾーン表示なし
+    // 例: 2025-11-10 08:43:54
+    const formatter = new Intl.DateTimeFormat('ja-JP', options);
+    const parts = formatter.formatToParts(date);
+    // ...（年月日時分秒を組み立て）
+  } else {
+    // 英語: JST表示あり
+    // 例: 2025-11-10 08:43:54 JST
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const parts = formatter.formatToParts(date);
+    // ...（年月日時分秒を組み立て）
+    return `${year}-${month}-${day} ${hour}:${minute}:${second} JST`;
+  }
+}
+```
+
+### 学んだこと
+
+1. **タイムゾーンの一貫性**: データの登録と取得で同じタイムゾーンを使用することが重要。特にグローバル分散環境（Cloudflare Workers）では注意が必要
+
+2. **状態の永続化**: ユーザー設定はlocalStorage、sessionStorage、Cookie、URLパラメータなど、用途に応じて適切な方法を選択する
+
+3. **SSR対応**: `window`や`localStorage`を使う場合は、サーバーサイドで実行される可能性も考慮して防御的にコーディングする
+
+4. **ユーザー体験の重要性**: 技術的には動作していても、言語が勝手に変わるなどの問題はユーザー体験を著しく損なう
+
+5. **デバッグの重要性**: 実際にブラウザで操作してみることで、自動テストでは発見できない問題が見つかる
+
+これらの改善により、アプリの完成度が大きく向上しました。
 
 ---
 

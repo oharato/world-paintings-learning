@@ -14,12 +14,19 @@ export interface Country {
 
 export type Language = 'ja' | 'en';
 
+// localStorageから言語設定を読み込む
+function getInitialLanguage(): Language {
+  if (typeof window === 'undefined') return 'ja'; // SSR対応
+  const saved = localStorage.getItem('language');
+  return saved === 'en' || saved === 'ja' ? saved : 'ja';
+}
+
 export const useCountriesStore = defineStore('countries', {
   state: () => ({
     countries: [] as Country[],
     loading: false,
     error: null as string | null,
-    currentLanguage: 'ja' as Language, // デフォルトは日本語
+    currentLanguage: getInitialLanguage(), // localStorageから読み込み
   }),
   actions: {
     async fetchCountries(forceReload: boolean = false) {
@@ -45,6 +52,10 @@ export const useCountriesStore = defineStore('countries', {
     setLanguage(lang: Language) {
       if (this.currentLanguage !== lang) {
         this.currentLanguage = lang;
+        // localStorageに保存
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('language', lang);
+        }
         this.fetchCountries(true); // 言語が変わったら強制的に再読み込み
       }
     },
