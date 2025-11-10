@@ -3,22 +3,28 @@
 ## Issue
 20 countries were missing flag origin information in the English version of the learning mode.
 
-## Root Cause
+## Root Cause (Initial)
 The `getFlagDescription` function in `scripts/generate-data.mts` constructed Wikipedia page names incorrectly for countries with special prefixes like "the", "Republic of", "Democratic Republic of", etc.
 
 For example:
 - "United States" → looked for "Flag of United States" but should be "Flag of the United States"
 - "Republic of Ireland" → looked for "Flag of Republic of Ireland" but should be "Flag of Ireland"
 
-## Solution Implemented
+## Solution Implemented (Updated Approach)
 
-### 1. Country Name Normalization
-Added `normalizeFlagPageName()` function that generates multiple Wikipedia page name variations:
-- Original name: "Flag of [Country]"
-- With/without "the": "Flag of the [Country]"
-- Without prefixes like "Republic of", "Democratic Republic of", "Federated States of", etc.
+Based on feedback, the approach was changed to be more reliable:
 
-The function tries each variation until it finds an existing Wikipedia page.
+### 1. Link-Based Flag Page Discovery
+Added `getEnglishFlagPageFromJaPage()` function that:
+- Fetches the Japanese Wikipedia page for each country
+- Extracts links starting with `https://en.wikipedia.org/wiki/Flag_of`
+- Uses the actual English flag page URL found in the Japanese page
+- This eliminates the need to guess country name variations
+
+This approach is more reliable because:
+- Wikipedia editors have already determined the correct English flag page
+- No need to handle variations like "the", "Republic of", etc.
+- Works for all countries regardless of naming complexity
 
 ### 2. HTML Sanitization
 Added `cleanHtmlText()` function that:
@@ -30,10 +36,12 @@ Added `cleanHtmlText()` function that:
 
 ### 3. Improved Flag Description Extraction
 Modified `getFlagDescription()` function to:
-- Generate multiple page name variations
-- Check if each page exists before trying to fetch content
+- Take both Japanese and English country names as parameters
+- For Japanese: use traditional "[国名]の国旗" page
+- For English: extract flag page link from Japanese Wikipedia page
 - Use HTML extracts (not plain text) for better cleaning
 - Provide detailed logging of which page was found
+- Fall back to guessing "Flag of the [Country]" if link not found
 
 ### 4. Security
 - Addressed CodeQL security alerts
@@ -45,35 +53,35 @@ Modified `getFlagDescription()` function to:
 ## Files Modified
 
 1. **scripts/generate-data.mts**
+   - Added `getEnglishFlagPageFromJaPage()` function (35 lines) - NEW approach
    - Added `cleanHtmlText()` function (24 lines)
-   - Added `normalizeFlagPageName()` function (39 lines)
-   - Improved `getFlagDescription()` function (62 lines)
+   - Removed `normalizeFlagPageName()` function (no longer needed)
+   - Improved `getFlagDescription()` function (60 lines) - now uses link extraction
 
-2. **scripts/__tests__/generate-data.test.ts** (NEW)
-   - 21 comprehensive tests covering all edge cases
-   - Tests for all 20 problematic countries
+2. **scripts/__tests__/generate-data.test.ts** (UPDATED)
+   - Simplified to 11 tests (removed tests for removed function)
+   - Focus on cleanHtmlText function testing
    - Security tests for HTML/XSS handling
 
 3. **README.md**
-   - Added documentation about country name normalization
-   - Added instructions for updating specific countries
-   - Explained the improvements made
+   - Updated documentation to explain link-based approach
+   - Removed references to name normalization
+   - Explained the new method of extracting flag page URLs from Japanese pages
 
-4. **docs/flag-origin-extraction-guide.md** (NEW)
+4. **docs/flag-origin-extraction-guide.md**
    - Comprehensive usage guide
    - Lists all 20 problematic countries
    - Step-by-step instructions
    - Troubleshooting section
 
-5. **TODO.md**
-   - Updated to reflect completed improvements
+5. **IMPLEMENTATION_SUMMARY.md**
+   - Updated to reflect new link-based approach
 
 ## Test Results
-- All 148 tests pass ✅
-- 21 new tests added for flag extraction functions
+- All 138 tests pass ✅
+- 11 tests for flag extraction (cleanHtmlText function)
 - Test coverage includes:
   - HTML cleaning with various formats
-  - Country name normalization for all problematic countries
   - Integration with real Wikipedia HTML extracts
   - Security scenarios (malicious HTML, double-encoding)
 

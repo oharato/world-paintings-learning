@@ -191,94 +191,106 @@ const cleanHtmlText = (html: string): string => {
   return text;
 };
 
-// 国名を正規化してFlag of ページ名を生成
-const normalizeFlagPageName = (countryName: string): string[] => {
-  const variations: string[] = [];
+// 日本語Wikipediaページから英語の国旗ページURLを取得
+const getEnglishFlagPageFromJaPage = async (countryNameJa: string): Promise<string | null> => {
+  try {
+    const jaApiUrl = 'https://ja.wikipedia.org/w/api.php';
 
-  // 元の名前でそのまま試す
-  variations.push(`Flag of ${countryName}`);
+    // 日本語の国ページのHTMLを取得
+    const pageUrl = `${jaApiUrl}?action=parse&page=${encodeURIComponent(countryNameJa)}&prop=text&format=json&origin=*`;
+    const response = await fetch(pageUrl);
+    const data: any = await response.json();
 
-  // "the" を除去して試す
-  if (countryName.toLowerCase().startsWith('the ')) {
-    const withoutThe = countryName.substring(4);
-    variations.push(`Flag of ${withoutThe}`);
-  } else {
-    // "the" を追加して試す
-    variations.push(`Flag of the ${countryName}`);
-  }
+    if (data.parse?.text) {
+      const htmlText = data.parse.text['*'];
 
-  // "Republic of", "Democratic Republic of", "Federated States of" などを除去して試す
-  const prefixesToRemove = [
-    'Republic of ',
-    'Democratic Republic of ',
-    'Federated States of ',
-    'Commonwealth of ',
-    'Kingdom of ',
-    'Principality of ',
-    'Sultanate of ',
-    'State of ',
-  ];
+      // https://en.wikipedia.org/wiki/Flag_of で始まるリンクを探す
+      const flagLinkRegex = /https:\/\/en\.wikipedia\.org\/wiki\/Flag_of[^"\s<>]*/g;
+      const matches = htmlText.match(flagLinkRegex);
 
-  for (const prefix of prefixesToRemove) {
-    if (countryName.startsWith(prefix)) {
-      const withoutPrefix = countryName.substring(prefix.length);
-      variations.push(`Flag of ${withoutPrefix}`);
-      variations.push(`Flag of the ${withoutPrefix}`);
-      break;
+      if (matches && matches.length > 0) {
+        // 最初に見つかった国旗ページURLを使用
+        const flagUrl = matches[0];
+        // URLからページタイトルを抽出（"Flag_of_..." 部分）
+        const pageTitleMatch = flagUrl.match(/wiki\/(.+)$/);
+        if (pageTitleMatch) {
+          const pageTitle = decodeURIComponent(pageTitleMatch[1]);
+          console.log(`  ✓ Found English flag page link: "${pageTitle}"`);
+          return pageTitle;
+        }
+      }
     }
+  } catch (e: any) {
+    console.warn(`  - Error finding English flag page link from Japanese page: ${e.message}`);
   }
 
-  // 重複を除去
-  return [...new Set(variations)];
+  return null;
 };
 
 // 国旗ページから説明を取得
-const getFlagDescription = async (countryName: string, lang: 'ja' | 'en'): Promise<string> => {
+const getFlagDescription = async (
+  countryNameJa: string | null,
+  countryNameEn: string | null,
+  lang: 'ja' | 'en'
+): Promise<string> => {
   const apiUrl = lang === 'ja' ? 'https://ja.wikipedia.org/w/api.php' : 'https://en.wikipedia.org/w/api.php';
 
   try {
-    // 国旗専用ページ名のバリエーションを生成
-    const flagPageVariations = lang === 'ja' ? [`${countryName}の国旗`] : normalizeFlagPageName(countryName);
+    let flagPageName: string | null = null;
 
-    // 各バリエーションを試す
-    for (const flagPageName of flagPageVariations) {
-      try {
-        // まずページが存在するか確認
-        const checkUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&format=json&origin=*`;
-        const checkResponse = await fetch(checkUrl);
-        const checkData: any = await checkResponse.json();
+    if (lang === 'ja' && countryNameJa) {
+      // 日本語の場合は従来通り
+      flagPageName = `${countryNameJa}の国旗`;
+    } else if (lang === 'en' && countryNameJa) {
+      // 英語の場合は、日本語ページから英語の国旗ページリンクを取得
+      flagPageName = await getEnglishFlagPageFromJaPage(countryNameJa);
 
-        const pages = checkData.query.pages;
-        const pageId = Object.keys(pages)[0];
-
-        // ページが存在しない場合は次のバリエーションを試す
-        if (pageId === '-1') {
-          continue;
-        }
-
-        // ページが存在する場合、HTMLの要約を取得
-        const summaryUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&prop=extracts&exintro=1&format=json&origin=*`;
-        const response = await fetch(summaryUrl);
-        const data: any = await response.json();
-
-        const extractPages = data.query.pages;
-        const extractPageId = Object.keys(extractPages)[0];
-
-        if (extractPageId !== '-1') {
-          const htmlExtract = extractPages[extractPageId]?.extract;
-          if (htmlExtract && htmlExtract.length > 50) {
-            // HTMLをクリーンなテキストに変換
-            const cleanText = cleanHtmlText(htmlExtract);
-            if (cleanText.length > 50) {
-              console.log(`  ✓ Found flag page: "${flagPageName}"`);
-              return cleanText;
-            }
-          }
-        }
-      } catch (e: any) {}
+      // リンクが見つからない場合は、英語名から推測（フォールバック）
+      if (!flagPageName && countryNameEn) {
+        flagPageName = `Flag of the ${countryNameEn}`;
+        console.log(`  - Using fallback page name: "${flagPageName}"`);
+      }
     }
 
-    console.warn(`  - No flag page found for "${countryName}" (tried ${flagPageVariations.length} variations)`);
+    if (!flagPageName) {
+      return '';
+    }
+
+    // ページが存在するか確認
+    const checkUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&format=json&origin=*`;
+    const checkResponse = await fetch(checkUrl);
+    const checkData: any = await checkResponse.json();
+
+    const pages = checkData.query.pages;
+    const pageId = Object.keys(pages)[0];
+
+    // ページが存在しない場合
+    if (pageId === '-1') {
+      console.warn(`  - Flag page not found: "${flagPageName}"`);
+      return '';
+    }
+
+    // ページが存在する場合、HTMLの要約を取得
+    const summaryUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&prop=extracts&exintro=1&format=json&origin=*`;
+    const response = await fetch(summaryUrl);
+    const data: any = await response.json();
+
+    const extractPages = data.query.pages;
+    const extractPageId = Object.keys(extractPages)[0];
+
+    if (extractPageId !== '-1') {
+      const htmlExtract = extractPages[extractPageId]?.extract;
+      if (htmlExtract && htmlExtract.length > 50) {
+        // HTMLをクリーンなテキストに変換
+        const cleanText = cleanHtmlText(htmlExtract);
+        if (cleanText.length > 50) {
+          console.log(`  ✓ Extracted flag description: ${cleanText.length} chars`);
+          return cleanText;
+        }
+      }
+    }
+
+    console.warn(`  - No flag description found for: "${flagPageName}"`);
   } catch (e: any) {
     console.warn(`  - Error getting flag description: ${e.message}`);
   }
@@ -646,15 +658,15 @@ const main = async () => {
     // 国旗の説明を専用ページから取得（既存のdescriptionが空または短い場合）
     try {
       if ((!descriptionJa || descriptionJa.length < 50) && countryNameJa) {
-        const flagDescJa = await getFlagDescription(countryNameJa as string, 'ja');
+        const flagDescJa = await getFlagDescription(countryNameJa as string, null, 'ja');
         if (flagDescJa && flagDescJa.length > descriptionJa.length) {
           descriptionJa = flagDescJa;
           console.log(`  ✓ Flag description (ja): ${flagDescJa.length} chars`);
         }
       }
 
-      if ((!descriptionEn || descriptionEn.length < 50) && countryNameEn) {
-        const flagDescEn = await getFlagDescription(countryNameEn as string, 'en');
+      if ((!descriptionEn || descriptionEn.length < 50) && countryNameJa) {
+        const flagDescEn = await getFlagDescription(countryNameJa as string, countryNameEn as string, 'en');
         if (flagDescEn && flagDescEn.length > descriptionEn.length) {
           descriptionEn = flagDescEn;
           console.log(`  ✓ Flag description (en): ${flagDescEn.length} chars`);
