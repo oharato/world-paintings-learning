@@ -22,17 +22,17 @@ npx wrangler login
 ### 2. D1 データベースの作成（初回のみ）
 
 ```bash
-npx wrangler d1 create national-flag-game-db
+npx wrangler d1 create world-flags-learning-db
 ```
 
 コマンド実行後、以下のような出力が表示されます：
 
 ```
-✅ Successfully created DB 'national-flag-game-db'
+✅ Successfully created DB 'world-flags-learning-db'
 
 [[d1_databases]]
 binding = "DB"
-database_name = "national-flag-game-db"
+database_name = "world-flags-learning-db"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
@@ -41,7 +41,7 @@ database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```toml
 [[d1_databases]]
 binding = "DB"
-database_name = "national-flag-game-db"
+database_name = "world-flags-learning-db"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # ここに実際のIDを貼り付け
 preview_database_id = "local-db"
 ```
@@ -49,7 +49,7 @@ preview_database_id = "local-db"
 ### 3. データベースマイグレーションの適用（初回のみ）
 
 ```bash
-npx wrangler d1 migrations apply national-flag-game-db --remote
+npx wrangler d1 migrations apply world-flags-learning-db --remote
 ```
 
 `--remote` フラグを指定することで、本番環境のデータベースにマイグレーションが適用されます。
@@ -72,7 +72,7 @@ npm run deploy
 デプロイが完了すると、以下のような出力が表示されます：
 
 ```
-✨ Deployment complete! Take a peek over at https://xxxxxxxx.national-flag-game.pages.dev
+✨ Deployment complete! Take a peek over at https://xxxxxxxx.world-flags-learning.pages.dev
 ```
 
 ### 5. D1 バインディングの設定（初回のみ）
@@ -88,7 +88,7 @@ Cloudflare Pages Functions で D1 データベースを使用するには、ダ�
 
 2. **プロジェクトを選択**
    - 左メニューから **Workers & Pages** をクリック
-   - **national-flag-game** プロジェクトを選択
+   - **world-flags-learning** プロジェクトを選択
 
 3. **Settings タブに移動**
    - 上部の **Settings** タブをクリック
@@ -100,7 +100,7 @@ Cloudflare Pages Functions で D1 データベースを使用するには、ダ�
 5. **バインディングを追加**
    - **Add binding** ボタンをクリック
    - **Variable name**: `DB` と入力
-   - **D1 database**: ドロップダウンから `national-flag-game-db` を選択
+   - **D1 database**: ドロップダウンから `world-flags-learning-db` を選択
    - **Save** をクリック
 
 6. **設定の反映を待つ**
@@ -143,11 +143,11 @@ npm run preview
 **解決方法**:
 1. マイグレーションが適用されているか確認:
    ```bash
-   npx wrangler d1 migrations list national-flag-game-db --remote
+   npx wrangler d1 migrations list world-flags-learning-db --remote
    ```
 2. 適用されていない場合は実行:
    ```bash
-   npx wrangler d1 migrations apply national-flag-game-db --remote
+   npx wrangler d1 migrations apply world-flags-learning-db --remote
    ```
 3. Cloudflare ダッシュボードで D1 バインディングが設定されているか確認
 

@@ -227,13 +227,13 @@ jobs:
         run: npm run build
 
       - name: Apply D1 Migrations
-        run: npx wrangler d1 migrations apply national-flag-game-db --remote
+        run: npx wrangler d1 migrations apply world-flags-learning-db --remote
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=national-flag-game
+        run: npx wrangler pages deploy dist --project-name=world-flags-learning
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -273,7 +273,7 @@ git push origin feature/new-feature
 2. 「Deploy to Cloudflare Pages」ワークフローが実行されていることを確認
 3. 緑色のチェックマーク ✅ が表示されれば成功
 4. ワークフローのログに Cloudflare Pages のデプロイ URL が表示されます
-5. または https://national-flag-game.pages.dev にアクセスして確認
+5. または https://world-flags-learning.pages.dev にアクセスして確認
 
 ## トラブルシューティング
 
@@ -308,12 +308,12 @@ gh secret set CLOUDFLARE_ACCOUNT_ID --body "your-account-id-here"
 
 ### エラー: "Database migration failed"
 - マイグレーションファイルに構文エラーがないか確認
-- ローカルで `npx wrangler d1 migrations apply national-flag-game-db --local` が成功するか確認
+- ローカルで `npx wrangler d1 migrations apply world-flags-learning-db --local` が成功するか確認
 - D1データベースへのアクセス権限がAPIトークンに付与されているか確認
   - Cloudflare ダッシュボードでAPIトークンの権限に「D1: Edit」が含まれているか確認
 
 ### エラー: "Project not found"
-- `projectName: national-flag-game` がワークフローファイルに正しく設定されているか確認
+- `projectName: world-flags-learning` がワークフローファイルに正しく設定されているか確認
 - Cloudflare Pages で同じ名前のプロジェクトが存在するか確認
 
 ### ビルドエラー

@@ -351,8 +351,8 @@ AIは、デプロイプロセスを効率化するため、`package.json` に以
 
 Cloudflare D1 の本番データベースは、以下の手順で作成・セットアップしました：
 
-1. **データベース作成**: `npx wrangler d1 create national-flag-game-db`
-2. **マイグレーション適用**: `npx wrangler d1 migrations apply national-flag-game-db --remote`
+1. **データベース作成**: `npx wrangler d1 create world-flags-learning-db`
+2. **マイグレーション適用**: `npx wrangler d1 migrations apply world-flags-learning-db --remote`
 3. **バインディング設定**: Cloudflare ダッシュボードで D1 データベースを Pages Functions にバインド
 
 AIは、これらの手順を段階的にガイドし、特に `--remote` フラグの重要性（ローカルではなく本番環境に適用するため）を強調してくれました。
@@ -756,7 +756,7 @@ UIの問題を伝える際は、以下のような情報を具体的に伝える
 
 最終的に、以下の構成で本番環境へのデプロイが完了しました：
 
-*   **URL**: `https://[deployment-id].national-flag-game.pages.dev`
+*   **URL**: `https://[deployment-id].world-flags-learning.pages.dev`
 *   **フロントエンド**: Vue.js アプリケーション（Cloudflare Pages）
 *   **バックエンド**: Hono API（Cloudflare Pages Functions）
 *   **データベース**: Cloudflare D1（2テーブル: ranking_daily, ranking_all_time）

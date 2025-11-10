@@ -243,8 +243,8 @@
     *   `0000_initial_schema.sql`: 初期テーブル作成
     *   `0001_remove_unique_constraint.sql`: UNIQUE制約削除（各挑戦ごとに記録できるように変更）
 *   **適用コマンド**: 
-    *   ローカル: `npx wrangler d1 migrations apply national-flag-game-db --local`
-    *   本番: `npx wrangler d1 migrations apply national-flag-game-db --remote`
+    *   ローカル: `npx wrangler d1 migrations apply world-flags-learning-db --local`
+    *   本番: `npx wrangler d1 migrations apply world-flags-learning-db --remote`
 *   **自動適用**: GitHub Actionsのデプロイワークフローで本番環境へのマイグレーションが自動実行される
 
 ### 3.5. 開発環境とコード品質

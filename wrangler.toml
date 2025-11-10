@@ -1,12 +1,12 @@
-name = "national-flag-game"
+name = "world-flags-learning"
 compatibility_date = "2025-11-08"
 
 pages_build_output_dir = "dist"
 
 [[d1_databases]]
 binding = "DB" # Honoからアクセスする際のバインディング名
-database_name = "national-flag-game-db"
-database_id = "729c0934-a3e2-4f27-a5c2-e30d4cd606c6"
+database_name = "world-flags-learning-db"
+database_id = "d68dc9d0-9b54-4d54-81e7-bd3efbbd6bcd"
 preview_database_id = "local-db" # ローカル開発用のプレビューDB ID
 
 [vars]

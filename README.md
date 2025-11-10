@@ -91,7 +91,7 @@ Wikipedia と Wikidata から国旗や国の情報を取得し、アプリケー
 ローカルのD1データベースにテーブルを作成します。
 
 ```bash
-npx wrangler d1 migrations apply national-flag-game-db --local
+npx wrangler d1 migrations apply world-flags-learning-db --local
 ```
 初回実行時に確認を求められた場合は `Y` を入力してください。
 
@@ -205,13 +205,13 @@ npx wrangler login
 
 #### 2. D1 データベースの作成（初回のみ）
 ```bash
-npx wrangler d1 create national-flag-game-db
+npx wrangler d1 create world-flags-learning-db
 ```
 出力された `database_id` を `wrangler.toml` に設定してください。
 
 #### 3. マイグレーションの適用（初回のみ）
 ```bash
-npx wrangler d1 migrations apply national-flag-game-db --remote
+npx wrangler d1 migrations apply world-flags-learning-db --remote
 ```
 
 #### 4. デプロイ
@@ -223,11 +223,11 @@ npm run deploy
 Cloudflare ダッシュボードで以下の設定を行います：
 
 1. https://dash.cloudflare.com/ にアクセス
-2. **Workers & Pages** → **national-flag-game** を選択
+2. **Workers & Pages** → **world-flags-learning** を選択
 3. **Settings** タブ → **Functions** → **D1 database bindings**
 4. **Add binding** をクリック
    - Variable name: `DB`
-   - D1 database: `national-flag-game-db` を選択
+   - D1 database: `world-flags-learning-db` を選択
 5. **Save** をクリック
 
 ### デプロイコマンド
@@ -244,7 +244,7 @@ npm run deploy:preview
 
 デプロイが完了すると、以下のような URL が表示されます：
 ```
-https://[deployment-id].national-flag-game.pages.dev
+https://[deployment-id].world-flags-learning.pages.dev
 ```
 
 この URL にアクセスしてアプリケーションの動作を確認してください。
