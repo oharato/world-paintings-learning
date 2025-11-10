@@ -72,36 +72,38 @@ watch(quizMode, () => {
 const nextCountry = () => {
   if (filteredCountries.value.length === 0) return;
 
+  // Change index first, then flip the card
+  if (currentIndex.value < filteredCountries.value.length - 1) {
+    currentIndex.value++;
+  } else {
+    currentIndex.value = 0;
+  }
+
   if (isFlipped.value) {
     disableTransition.value = true;
     isFlipped.value = false;
     setTimeout(() => {
       disableTransition.value = false;
     }, 0);
-  }
-
-  if (currentIndex.value < filteredCountries.value.length - 1) {
-    currentIndex.value++;
-  } else {
-    currentIndex.value = 0;
   }
 };
 
 const prevCountry = () => {
   if (filteredCountries.value.length === 0) return;
 
+  // Change index first, then flip the card
+  if (currentIndex.value > 0) {
+    currentIndex.value--;
+  } else {
+    currentIndex.value = filteredCountries.value.length - 1;
+  }
+
   if (isFlipped.value) {
     disableTransition.value = true;
     isFlipped.value = false;
     setTimeout(() => {
       disableTransition.value = false;
     }, 0);
-  }
-
-  if (currentIndex.value > 0) {
-    currentIndex.value--;
-  } else {
-    currentIndex.value = filteredCountries.value.length - 1;
   }
 };
 
