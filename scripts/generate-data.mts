@@ -160,28 +160,117 @@ const getMapImageFromInfobox = async (countryName: string, lang: 'ja' | 'en'): P
   return '';
 };
 
+// HTMLテキストからリンクや注釈を除去してクリーンなテキストを取得
+const cleanHtmlText = (html: string): string => {
+  // HTMLタグを削除
+  let text = html.replace(/<[^>]+>/g, '');
+  // HTMLエンティティをデコード
+  text = text
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+  // Wikipedia style の注釈 [[1]], [[2]] などを削除
+  text = text.replace(/\[\[[\d]+\]\]/g, '');
+  // 注釈番号（[1], [2], [citation needed]など）と空の[]を削除
+  text = text.replace(/\[[^\]]*\]/g, '');
+  // 複数の空白を1つにまとめる
+  text = text.replace(/\s+/g, ' ');
+  // 前後の空白を削除
+  text = text.trim();
+  return text;
+};
+
+// 国名を正規化してFlag of ページ名を生成
+const normalizeFlagPageName = (countryName: string): string[] => {
+  const variations: string[] = [];
+
+  // 元の名前でそのまま試す
+  variations.push(`Flag of ${countryName}`);
+
+  // "the" を除去して試す
+  if (countryName.toLowerCase().startsWith('the ')) {
+    const withoutThe = countryName.substring(4);
+    variations.push(`Flag of ${withoutThe}`);
+  } else {
+    // "the" を追加して試す
+    variations.push(`Flag of the ${countryName}`);
+  }
+
+  // "Republic of", "Democratic Republic of", "Federated States of" などを除去して試す
+  const prefixesToRemove = [
+    'Republic of ',
+    'Democratic Republic of ',
+    'Federated States of ',
+    'Commonwealth of ',
+    'Kingdom of ',
+    'Principality of ',
+    'Sultanate of ',
+    'State of ',
+  ];
+
+  for (const prefix of prefixesToRemove) {
+    if (countryName.startsWith(prefix)) {
+      const withoutPrefix = countryName.substring(prefix.length);
+      variations.push(`Flag of ${withoutPrefix}`);
+      variations.push(`Flag of the ${withoutPrefix}`);
+      break;
+    }
+  }
+
+  // 重複を除去
+  return [...new Set(variations)];
+};
+
 // 国旗ページから説明を取得
 const getFlagDescription = async (countryName: string, lang: 'ja' | 'en'): Promise<string> => {
   const apiUrl = lang === 'ja' ? 'https://ja.wikipedia.org/w/api.php' : 'https://en.wikipedia.org/w/api.php';
 
   try {
-    // 国旗専用ページ名
-    const flagPageName = lang === 'ja' ? `${countryName}の国旗` : `Flag of ${countryName}`;
+    // 国旗専用ページ名のバリエーションを生成
+    const flagPageVariations = lang === 'ja' ? [`${countryName}の国旗`] : normalizeFlagPageName(countryName);
 
-    // ページの要約を取得
-    const summaryUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&prop=extracts&exintro=1&explaintext=1&format=json&origin=*`;
-    const response = await fetch(summaryUrl);
-    const data: any = await response.json();
+    // 各バリエーションを試す
+    for (const flagPageName of flagPageVariations) {
+      try {
+        // まずページが存在するか確認
+        const checkUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&format=json&origin=*`;
+        const checkResponse = await fetch(checkUrl);
+        const checkData: any = await checkResponse.json();
 
-    const pages = data.query.pages;
-    const pageId = Object.keys(pages)[0];
+        const pages = checkData.query.pages;
+        const pageId = Object.keys(pages)[0];
 
-    if (pageId !== '-1') {
-      const extract = pages[pageId]?.extract;
-      if (extract && extract.length > 50) {
-        return extract;
-      }
+        // ページが存在しない場合は次のバリエーションを試す
+        if (pageId === '-1') {
+          continue;
+        }
+
+        // ページが存在する場合、HTMLの要約を取得
+        const summaryUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&prop=extracts&exintro=1&format=json&origin=*`;
+        const response = await fetch(summaryUrl);
+        const data: any = await response.json();
+
+        const extractPages = data.query.pages;
+        const extractPageId = Object.keys(extractPages)[0];
+
+        if (extractPageId !== '-1') {
+          const htmlExtract = extractPages[extractPageId]?.extract;
+          if (htmlExtract && htmlExtract.length > 50) {
+            // HTMLをクリーンなテキストに変換
+            const cleanText = cleanHtmlText(htmlExtract);
+            if (cleanText.length > 50) {
+              console.log(`  ✓ Found flag page: "${flagPageName}"`);
+              return cleanText;
+            }
+          }
+        }
+      } catch (e: any) {}
     }
+
+    console.warn(`  - No flag page found for "${countryName}" (tried ${flagPageVariations.length} variations)`);
   } catch (e: any) {
     console.warn(`  - Error getting flag description: ${e.message}`);
   }
