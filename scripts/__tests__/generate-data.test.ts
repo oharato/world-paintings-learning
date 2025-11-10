@@ -2,20 +2,24 @@ import { describe, expect, it } from 'vitest';
 
 // HTMLテキストからリンクや注釈を除去してクリーンなテキストを取得
 const cleanHtmlText = (html: string): string => {
-  // HTMLタグを削除
-  let text = html.replace(/<[^>]+>/g, '');
-  // HTMLエンティティをデコード
-  text = text
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, ' ');
+  // HTMLタグを完全に削除（<script>, <style>, その他すべて）
+  let text = html.replace(/<[^>]*>/gi, '');
+
   // Wikipedia style の注釈 [[1]], [[2]] などを削除
   text = text.replace(/\[\[[\d]+\]\]/g, '');
   // 注釈番号（[1], [2], [citation needed]など）と空の[]を削除
   text = text.replace(/\[[^\]]*\]/g, '');
+
+  // HTMLエンティティをデコード（最後に実行して二重エスケープを防ぐ）
+  // 順序を変更: 特殊文字から先にデコード
+  text = text
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&'); // &amp; は最後にデコード
+
   // 複数の空白を1つにまとめる
   text = text.replace(/\s+/g, ' ');
   // 前後の空白を削除
@@ -118,6 +122,29 @@ describe('Flag Description Extraction Functions', () => {
       expect(result).not.toContain('[[2]]');
       expect(result).toContain('consists of thirteen horizontal stripes.');
       expect(result).toContain('50 U.S. states');
+    });
+
+    it('should safely handle potentially malicious HTML tags', () => {
+      const input = 'Text with <script>alert("xss")</script> and <style>body{}</style> tags.';
+      const result = cleanHtmlText(input);
+
+      // HTML tags are removed, but content inside them remains (this is safe because output goes to JSON, not HTML)
+      expect(result).not.toContain('<script');
+      expect(result).not.toContain('</script>');
+      expect(result).not.toContain('<style');
+      expect(result).not.toContain('</style>');
+      // Content is preserved
+      expect(result).toContain('alert("xss")');
+      expect(result).toContain('body{}');
+    });
+
+    it('should handle entities without double-decoding', () => {
+      // &amp;amp; should be decoded once to &amp; (not twice to &)
+      const input = 'Text with &amp;amp; entity.';
+      const result = cleanHtmlText(input);
+
+      // Should decode only once: &amp;amp; -> &amp;
+      expect(result).toBe('Text with &amp; entity.');
     });
   });
 

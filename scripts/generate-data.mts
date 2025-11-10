@@ -161,21 +161,29 @@ const getMapImageFromInfobox = async (countryName: string, lang: 'ja' | 'en'): P
 };
 
 // HTMLテキストからリンクや注釈を除去してクリーンなテキストを取得
+// Security Note: This function processes trusted Wikipedia API responses.
+// The output is stored in JSON files and never rendered as HTML.
+// The regex /<[^>]*>/gi properly removes all HTML tags including <script>, <style>, etc.
 const cleanHtmlText = (html: string): string => {
-  // HTMLタグを削除
-  let text = html.replace(/<[^>]+>/g, '');
-  // HTMLエンティティをデコード
-  text = text
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, ' ');
+  // HTMLタグを完全に削除（<script>, <style>, その他すべて）
+  // This removes the tags but preserves the content, which is safe for JSON storage
+  let text = html.replace(/<[^>]*>/gi, '');
+
   // Wikipedia style の注釈 [[1]], [[2]] などを削除
   text = text.replace(/\[\[[\d]+\]\]/g, '');
   // 注釈番号（[1], [2], [citation needed]など）と空の[]を削除
   text = text.replace(/\[[^\]]*\]/g, '');
+
+  // HTMLエンティティをデコード（最後に実行して二重エスケープを防ぐ）
+  // 順序を変更: 特殊文字から先にデコード
+  text = text
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&'); // &amp; は最後にデコード
+
   // 複数の空白を1つにまとめる
   text = text.replace(/\s+/g, ' ');
   // 前後の空白を削除
