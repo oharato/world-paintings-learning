@@ -20,23 +20,27 @@
 
 *   **目的**: 各種情報源から国情報を自動で取得し、フロントエンドが利用する多言語JSONファイルと国旗・地図画像を生成する。
 *   **実行方法**: 開発者のPC上で手動実行するコマンドとして提供する。
-    1.  **国名リストの生成**: `npm run batch:create-list`
-    2.  **国データの生成と画像ダウンロード**: `npm run batch:create-data`
-*   **スクリプト配置**: プロジェクトルートに `scripts/generate-country-list.mts` および `scripts/generate-data.mts` として配置する。
+  1.  **国名／国旗ページマッピングの生成**: 日本語版Wikipediaの「国旗の一覧」から国名（表示名）と、それに対応する国ページ／国旗ページのURLを抽出する。実行例:
+
+    npx tsx scripts/extract-flag-page-names.mts
+
+    このスクリプトは `scripts/flag-page-mapping.json` を生成します（キーは表示名、値は { countryPage, flagPage } 形式のURLオブジェクト）。
+  2.  **国データの生成と画像ダウンロード**: `npm run batch:create-data`（`scripts/generate-data.mts` が `scripts/flag-page-mapping.json` を読み込みます）
+*   **スクリプト配置**: プロジェクトルートに `scripts/extract-flag-page-names.mts`（国名／国旗ページマッピング生成）および `scripts/generate-data.mts`（データ生成）を配置する。
 *   **使用技術**:
     *   **言語**: Node.js (TypeScript)
     *   **TypeScript実行環境**: **tsx**
     *   **Wikipediaクライアント**: **wikijs**
     *   **HTTPクライアント**: **node-fetch**
 *   **処理フロー**:
-    1.  `scripts/generate-country-list.mts` が日本語版Wikipediaの「国旗の一覧」ページから国名リストを抽出し、`scripts/country-list.json` として保存します。
-    2.  `scripts/generate-data.mts` が `scripts/country-list.json` を読み込み、各国のデータを処理します。
+  1.  `scripts/extract-flag-page-names.mts` が日本語版Wikipediaの「国旗の一覧」ページから、表示名（例: "タイ"）と対応する国ページおよび国旗ページのURLを抽出し、`scripts/flag-page-mapping.json` として保存します。
+  2.  `scripts/generate-data.mts` が `scripts/flag-page-mapping.json` を読み込み、表示名をキーにマッピングを参照しつつ各国のデータを処理します（国ページ名と国旗ページ名が異なるケースに対応）。
     3.  各国のデータ取得では、日本語版Wikipedia (`ja.wikipedia.org`) と英語版Wikipedia (`en.wikipedia.org`) の両方から情報を取得します。
         -   日本語ページから言語間リンクを利用して対応する英語版ページ名を特定します。
         -   `wikijs` の `page.info()`、`page.summary()`、`page.section()` などのメソッドを使い、国名、首都、国旗画像URL、概要などの情報を抽出します。
         -   `page.info()` が返すデータ構造の多様性に対応するため、プロパティへのアクセスは防御的に行います。
         -   `page.section()` が特定のページでエラーを発生させる場合があるため、`try-catch` でハンドリングし、処理を続行します。
-        -   **大陸情報**: Wikidata API (P30 property)から取得します。
+        -   **大陸情報**: まずWikipediaページのカテゴリHTML（`Category:〇〇の国` / `Countries in 〇〇`）から抽出します。複数の大陸カテゴリに属する国（オーストラリア、パナマなど）に対応するため、優先順位を設定しています（オセアニア、アフリカ、北アメリカ、南アメリカ、ヨーロッパ、アジア）。カテゴリから取得できない場合のみ、Wikidata API (P30 property) にフォールバックします。
         -   **地図画像URL**: WikipediaのinfoboxのHTMLを解析するか、REST Countries APIから取得します。
         -   **国旗の成り立ち・意味の解説**: 専用の国旗ページ（"Flag of [Country]"または"[国名]の国旗"）から取得し、`description` として利用します。
     4.  取得した国旗画像URLから画像をダウンロードし、`public/flags/` ディレクトリに保存します。`flag_image_url` はローカルパス (`/flags/jpn.svg` など) に変換されます。

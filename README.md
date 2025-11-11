@@ -53,8 +53,9 @@
 ### データソース
 - [Wikipedia](https://www.wikipedia.org/) (国旗画像、地図画像、国旗の由来、概要など)
   - データ取得には [wikijs](https://www.npmjs.com/package/wikijs) を使用
-- [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) (大陸情報: P30、首都情報: P36)
+- [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) (首都情報: P36、大陸情報のフォールバック: P30)
   - Wikidata APIを直接使用し、言語別ラベルを取得
+  - 大陸情報は主にWikipediaのカテゴリ（`Category:〇〇の国` / `Countries in 〇〇`）から取得し、取得できない場合のみWikidataにフォールバック
 
 ## 🚀 ローカルでの実行方法
 
@@ -67,21 +68,23 @@ npm install
 Wikipedia と Wikidata から国旗や国の情報を取得し、アプリケーションが使用する `public/countries.ja.json` と `public/countries.en.json` を生成します。
 **注意**: この処理は外部APIにアクセスするため、時間がかかる場合があります（約30分〜1時間）。
 
-1.  **国名リストの生成**
-    ```bash
-    npm run batch:create-list
-    ```
-    Wikipedia の "国の一覧" ページから国名リストを生成します。
-    
+1.  **国名／国旗ページマッピングの生成（任意）**
+  ```bash
+  npx tsx scripts/extract-flag-page-names.mts
+  ```
+  日本語版Wikipediaの「国旗の一覧」ページから表示名（例: "タイ"）と対応する国ページ・国旗ページのURLを抽出し、`scripts/flag-page-mapping.json` を生成します。
+
 2.  **国データの生成と画像ダウンロード**
-    ```bash
-    npm run batch:create-data
-    ```
+  ```bash
+  npm run batch:create-data
+  ```
     各国について以下の情報を取得します：
     - 国旗画像（`public/flags/` にダウンロード）
     - 地図画像（`public/maps/` にダウンロード）
     - 首都（Wikidata P36 から取得、言語別ラベル）
-    - 大陸（Wikidata P30 から取得、言語別ラベル）
+    - 大陸（まずWikipediaのカテゴリHTMLから取得、失敗時はWikidata P30にフォールバック）
+      - カテゴリパターン: 日本語版 `Category:〇〇の国`、英語版 `Countries in 〇〇`
+      - 複数の大陸カテゴリに属する国（オーストラリア、パナマなど）に対応するため優先順位を設定
     - 概要（Wikipedia の要約セクション）
     - 国旗の由来（日本語版は「[国名]の国旗」ページ、英語版は日本語ページ内のリンクから自動検出）
     

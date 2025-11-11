@@ -16,7 +16,7 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "batch:create-data": "tsx scripts/generate-data.mts",
-    "batch:create-list": "tsx scripts/generate-country-list.mts",
+    "batch:create-list": "tsx scripts/extract-flag-page-names.mts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",

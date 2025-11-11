@@ -12,8 +12,8 @@
 
 ## フェーズ2: データ準備
 
-- [x] 2.1. 国データ取得バッチスクリプトの実装 (`scripts/generate-data.js` with `wikijs`)
-- [x] 2.2. バッチ処理を実行し、`public/countries.json` を生成する
+- [x] 2.1. 国データ取得バッチスクリプトの実装 (`scripts/generate-data.mts` with `wikijs`)
+- [x] 2.2. バッチ処理を実行し、`public/countries.ja.json` および `public/countries.en.json` を生成する
 
 ## フェーズ3: フロントエンド実装
 
@@ -41,9 +41,9 @@
 
 ## 改善
 - [x] 画像ファイルをダウンロードしておき、ローカルから配信する
-- [x] countries.jsonに英語が混ざっているので日本語化する。英語版の内容も作成する。
-- [x] 国旗がある国すべてをcountries.jsonに拡充する
-- [x] public/flags 下の画像がおかしい。countries.json の flag_image_url は正しそうなのでそれをダウンロードして、国名のファイル名を保存する。
+- [x] countries.ja.json, countries.en.json に分割して多言語対応を実装
+- [x] 国旗がある国すべてを拡充（198カ国）
+- [x] public/flags 下の画像を適切にダウンロードして保存
 - [x] continent, map_image_url, descriptionが空なので適切な情報取得元を探す
     - [x] continent: Wikidata API (P30 property)から取得
     - [x] map_image_url: infoboxのHTMLから地図画像を抽出

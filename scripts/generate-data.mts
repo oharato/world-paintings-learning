@@ -69,7 +69,55 @@ const getCapitalFromWikidata = async (countryName: string, lang: 'ja' | 'en' = '
   return '';
 };
 
-// WikidataからContinentを取得
+// Wikipediaのカテゴリから大陸を取得
+const getContinentFromCategory = async (countryPageUrl: string, lang: 'ja' | 'en'): Promise<string> => {
+  try {
+    const response = await fetch(countryPageUrl);
+    const html = await response.text();
+
+    if (lang === 'ja') {
+      // 日本語版: "Category:〇〇の国" パターンをマッチ
+      // 優先順位順に並べる（オセアニア、アフリカ、北アメリカ、南アメリカ、ヨーロッパ、アジア）
+      const continentPatterns = [
+        { pattern: /Category:オセアニアの国/i, continent: 'オセアニア' },
+        { pattern: /Category:アフリカの国/i, continent: 'アフリカ' },
+        { pattern: /Category:北アメリカの国/i, continent: '北アメリカ' },
+        { pattern: /Category:南アメリカの国/i, continent: '南アメリカ' },
+        { pattern: /Category:ヨーロッパの国/i, continent: 'ヨーロッパ' },
+        { pattern: /Category:アジアの国/i, continent: 'アジア' },
+      ];
+
+      for (const { pattern, continent } of continentPatterns) {
+        if (pattern.test(html)) {
+          return continent;
+        }
+      }
+    } else {
+      // 英語版: "Countries in 〇〇" パターンをマッチ
+      // 優先順位順に並べる（オセアニア、アフリカ、北アメリカ、南アメリカ、ヨーロッパ、アジア）
+      const continentPatterns = [
+        { pattern: /Countries in Oceania/i, continent: 'Oceania' },
+        { pattern: /Countries in Africa/i, continent: 'Africa' },
+        { pattern: /Countries in North America/i, continent: 'North America' },
+        { pattern: /Countries in South America/i, continent: 'South America' },
+        { pattern: /Countries in Europe/i, continent: 'Europe' },
+        { pattern: /Countries in Asia/i, continent: 'Asia' },
+      ];
+
+      for (const { pattern, continent } of continentPatterns) {
+        if (pattern.test(html)) {
+          return continent;
+        }
+      }
+    }
+  } catch (e: any) {
+    console.warn(`  - Error getting continent from category: ${e.message}`);
+  }
+
+  return '';
+};
+
+// WikidataからContinentを取得（フォールバック用）
 const getContinentFromWikidata = async (countryName: string, lang: 'ja' | 'en' = 'en'): Promise<string> => {
   try {
     // WikipediaページからWikidata IDを取得
@@ -191,6 +239,28 @@ const cleanHtmlText = (html: string): string => {
   return text;
 };
 
+// 国旗ページ名マッピングを読み込む（初回のみ）
+interface CountryMapping {
+  countryPage: string; // https://ja.wikipedia.org/wiki/...
+  flagPage: string; // https://ja.wikipedia.org/wiki/...
+}
+
+let flagPageMapping: Record<string, CountryMapping> | null = null;
+
+const loadFlagPageMapping = async (): Promise<Record<string, CountryMapping>> => {
+  if (flagPageMapping) return flagPageMapping;
+
+  try {
+    const mappingPath = path.resolve(process.cwd(), 'scripts', 'flag-page-mapping.json');
+    const mappingData = await fs.readFile(mappingPath, 'utf-8');
+    flagPageMapping = JSON.parse(mappingData);
+    return flagPageMapping!;
+  } catch (e) {
+    console.warn('  - Could not load flag page mapping, using fallback');
+    return {};
+  }
+};
+
 // 日本語Wikipediaページから英語の国旗ページURLを取得
 const getEnglishFlagPageFromJaPage = async (countryNameJa: string): Promise<string | null> => {
   try {
@@ -239,16 +309,80 @@ const getFlagDescription = async (
     let flagPageName: string | null = null;
 
     if (lang === 'ja' && countryNameJa) {
-      // 日本語の場合は従来通り
-      flagPageName = `${countryNameJa}の国旗`;
+      // 日本語の場合は、まずマッピングから正確なページ名を取得
+      const mapping = await loadFlagPageMapping();
+
+      // 完全一致を試す
+      if (mapping[countryNameJa]) {
+        const urlPath = new URL(mapping[countryNameJa].flagPage).pathname.replace('/wiki/', '');
+        flagPageName = decodeURIComponent(urlPath).replace(/_/g, ' ');
+        console.log(`  ✓ Found flag page from mapping: "${flagPageName}"`);
+      } else {
+        // "(国)"などを除いた部分一致を試す
+        const simplifiedName = countryNameJa.replace(/\s*\([^)]+\)/, ''); // "(国)"などを削除
+        if (mapping[simplifiedName]) {
+          const urlPath = new URL(mapping[simplifiedName].flagPage).pathname.replace('/wiki/', '');
+          flagPageName = decodeURIComponent(urlPath).replace(/_/g, ' ');
+          console.log(`  ✓ Found flag page from mapping (simplified): "${flagPageName}"`);
+        } else {
+          // マッピングにない場合は従来の方法
+          flagPageName = `${countryNameJa}の国旗`;
+        }
+      }
     } else if (lang === 'en' && countryNameJa) {
       // 英語の場合は、日本語ページから英語の国旗ページリンクを取得
       flagPageName = await getEnglishFlagPageFromJaPage(countryNameJa);
 
       // リンクが見つからない場合は、英語名から推測（フォールバック）
       if (!flagPageName && countryNameEn) {
-        flagPageName = `Flag of the ${countryNameEn}`;
-        console.log(`  - Using fallback page name: "${flagPageName}"`);
+        // 特殊な国旗ページ名のマッピング（直接指定）
+        const specialPageNames: Record<string, string> = {
+          'Republic of Ireland': 'Flag of Ireland',
+          'United Kingdom': 'Union Jack',
+          'Cook Islands': 'Flag of the Cook Islands',
+          Seychelles: 'Flag of Seychelles',
+          Taiwan: 'Flag of the Republic of China',
+          Denmark: 'Dannebrog',
+        };
+
+        if (specialPageNames[countryNameEn]) {
+          flagPageName = specialPageNames[countryNameEn];
+          console.log(`  - Using special page name: "${flagPageName}"`);
+        } else {
+          // "the"を付けるべき国名のリスト（正確なマッチング）
+          const countriesNeedingThe = [
+            'United States',
+            'United Kingdom',
+            'United Arab Emirates',
+            'Netherlands',
+            'Philippines',
+            'Bahamas',
+            'The Bahamas',
+            'Maldives',
+            'Comoros',
+            'Marshall Islands',
+            'Federated States of Micronesia',
+            'Gambia',
+            'The Gambia',
+            'Republic of the Congo',
+            'Democratic Republic of the Congo',
+            'Central African Republic',
+            'Czech Republic',
+            'Dominican Republic',
+          ];
+
+          // 国名が"the"を必要とするかチェック
+          const needsThe = countriesNeedingThe.some(
+            (c) =>
+              countryNameEn.toLowerCase() === c.toLowerCase() ||
+              countryNameEn.toLowerCase() === c.toLowerCase().replace(/^the /, '')
+          );
+
+          // 既に"the"で始まっている場合はそのまま使用
+          const nameForFlag = countryNameEn.replace(/^The /i, '');
+          flagPageName = needsThe ? `Flag of the ${nameForFlag}` : `Flag of ${countryNameEn}`;
+          console.log(`  - Using fallback page name: "${flagPageName}"`);
+        }
       }
     }
 
@@ -279,7 +413,19 @@ const getFlagDescription = async (
     const extractPageId = Object.keys(extractPages)[0];
 
     if (extractPageId !== '-1') {
-      const htmlExtract = extractPages[extractPageId]?.extract;
+      let htmlExtract = extractPages[extractPageId]?.extract;
+
+      // イントロが短い（または存在しない）場合は、exintroなしで再取得
+      if (!htmlExtract || htmlExtract.length < 100) {
+        console.log(`  - Intro too short, fetching full page...`);
+        const fullPageUrl = `${apiUrl}?action=query&titles=${encodeURIComponent(flagPageName)}&prop=extracts&format=json&origin=*`;
+        const fullResponse = await fetch(fullPageUrl);
+        const fullData: any = await fullResponse.json();
+        const fullPages = fullData.query.pages;
+        const fullPageId = Object.keys(fullPages)[0];
+        htmlExtract = fullPages[fullPageId]?.extract;
+      }
+
       if (htmlExtract && htmlExtract.length > 50) {
         // HTMLをクリーンなテキストに変換
         const cleanText = cleanHtmlText(htmlExtract);
@@ -479,14 +625,20 @@ const main = async () => {
   // コマンドライン引数から国名を取得（指定された場合）
   const targetCountry = process.argv[2];
 
-  // 国名リストを読み込む
-  let countryNamesJa: string[] = JSON.parse(
-    await fs.readFile(path.resolve(process.cwd(), 'scripts', 'country-list.json'), 'utf-8')
-  );
+  // flag-page-mapping.jsonから国名リストを読み込む
+  const mapping = await loadFlagPageMapping();
+  let countryNamesJa = Object.keys(mapping);
 
   // 特定の国が指定された場合、そのリストに絞る
   if (targetCountry) {
-    const filtered = countryNamesJa.filter((name) => name.includes(targetCountry));
+    // 完全一致を優先、なければ先頭一致、なければ部分一致
+    let filtered = countryNamesJa.filter((name) => name === targetCountry);
+    if (filtered.length === 0) {
+      filtered = countryNamesJa.filter((name) => name.startsWith(targetCountry));
+    }
+    if (filtered.length === 0) {
+      filtered = countryNamesJa.filter((name) => name.includes(targetCountry));
+    }
     if (filtered.length === 0) {
       console.error(`国名 "${targetCountry}" が見つかりませんでした。`);
       process.exit(1);
@@ -518,22 +670,27 @@ const main = async () => {
   }
 
   for (const countryNameJa of countryNamesJa) {
-    console.log(`Processing ${countryNameJa}...`);
+    // マッピングから実際の国ページ名を取得
+    const countryMapping = mapping[countryNameJa];
+    const countryPageUrl = new URL(countryMapping.countryPage).pathname.replace('/wiki/', '');
+    const countryPageName = decodeURIComponent(countryPageUrl).replace(/_/g, ' ');
+
+    console.log(`Processing ${countryPageName}...`);
 
     // 日本語データを取得してから英語名を取得し、それをIDに使用
-    const dataJaTmp = await getCountryDataFromWiki(countryNameJa, 'ja');
+    const dataJaTmp = await getCountryDataFromWiki(countryPageName, 'ja');
     if (!dataJaTmp) {
-      console.warn(`  - Skipping ${countryNameJa} (Japanese data not found).`);
+      console.warn(`  - Skipping ${countryPageName} (Japanese data not found).`);
       continue;
     }
 
     // 英語データを取得 (日本語名から英語ページを推測)
-    let countryNameEn = dataJaTmp.name || countryNameJa; // 日本語版で取得した英語名があればそれを使う
-    if (countryNameEn === countryNameJa) {
+    let countryNameEn = dataJaTmp.name || countryPageName; // 日本語版で取得した英語名があればそれを使う
+    if (countryNameEn === countryPageName) {
       // 英語名が日本語名と同じなら、英語版Wikipediaで検索しやすい名前に変換を試みる
       try {
         const jaPageInstance = await (wiki({ apiUrl: 'https://ja.wikipedia.org/w/api.php' }) as any).page(
-          countryNameJa
+          countryPageName
         );
         const langlinks = await jaPageInstance.langlinks();
         const enLink = langlinks.find((link: any) => link.lang === 'en');
@@ -542,7 +699,7 @@ const main = async () => {
         } else {
           // 言語間リンクが見つからない場合は、元のロジックで検索を試みる
           const enPageSearch = await (wiki({ apiUrl: 'https://en.wikipedia.org/w/api.php' }) as any).search(
-            countryNameJa,
+            countryPageName,
             1
           );
           if (enPageSearch.results.length > 0) {
@@ -550,10 +707,10 @@ const main = async () => {
           }
         }
       } catch (error: any) {
-        console.warn(`  - Error getting langlinks for "${countryNameJa}":`, error.message);
+        console.warn(`  - Error getting langlinks for "${countryPageName}":`, error.message);
         // エラーが発生した場合も元のロジックで検索を試みる
         const enPageSearch = await (wiki({ apiUrl: 'https://en.wikipedia.org/w/api.php' }) as any).search(
-          countryNameJa,
+          countryPageName,
           1
         );
         if (enPageSearch.results.length > 0) {
@@ -609,20 +766,45 @@ const main = async () => {
       // Wikidataから取得できない場合は、既存のデータを使用
     }
 
-    // 大陸をWikidataから取得（日本語版と英語版）
+    // 大陸をカテゴリから取得（まずこちらを優先）、失敗したらWikidataから取得
     let continentJa = 'N/A';
     let continentEn = 'N/A';
     try {
-      const continentFromWikidataJa = await getContinentFromWikidata(countryNameEn as string, 'ja');
-      const continentFromWikidataEn = await getContinentFromWikidata(countryNameEn as string, 'en');
-
-      if (continentFromWikidataJa) {
-        continentJa = continentFromWikidataJa;
-        console.log(`  ✓ Continent (JA): ${continentJa}`);
+      // まずカテゴリから取得を試みる（日本語版）
+      if (countryMapping.countryPage) {
+        const continentFromCategoryJa = await getContinentFromCategory(countryMapping.countryPage, 'ja');
+        if (continentFromCategoryJa) {
+          continentJa = continentFromCategoryJa;
+          console.log(`  ✓ Continent from category (JA): ${continentJa}`);
+        }
       }
-      if (continentFromWikidataEn) {
-        continentEn = continentFromWikidataEn;
-        console.log(`  ✓ Continent (EN): ${continentEn}`);
+
+      // カテゴリから取得できなかった場合、Wikidataにフォールバック
+      if (continentJa === 'N/A' && countryNameEn) {
+        const continentFromWikidataJa = await getContinentFromWikidata(countryNameEn as string, 'ja');
+        if (continentFromWikidataJa) {
+          continentJa = continentFromWikidataJa;
+          console.log(`  ✓ Continent from Wikidata (JA): ${continentJa}`);
+        }
+      }
+
+      // 英語版もカテゴリから取得
+      if (countryNameEn) {
+        const countryPageUrlEn = `https://en.wikipedia.org/wiki/${encodeURIComponent(countryNameEn.replace(/ /g, '_'))}`;
+        const continentFromCategoryEn = await getContinentFromCategory(countryPageUrlEn, 'en');
+        if (continentFromCategoryEn) {
+          continentEn = continentFromCategoryEn;
+          console.log(`  ✓ Continent from category (EN): ${continentEn}`);
+        }
+      }
+
+      // カテゴリから取得できなかった場合、Wikidataにフォールバック
+      if (continentEn === 'N/A' && countryNameEn) {
+        const continentFromWikidataEn = await getContinentFromWikidata(countryNameEn as string, 'en');
+        if (continentFromWikidataEn) {
+          continentEn = continentFromWikidataEn;
+          console.log(`  ✓ Continent from Wikidata (EN): ${continentEn}`);
+        }
       }
     } catch (_e) {
       // エラーは既にログ出力されている
@@ -658,7 +840,7 @@ const main = async () => {
     // 国旗の説明を専用ページから取得（既存のdescriptionが空または短い場合）
     try {
       if ((!descriptionJa || descriptionJa.length < 50) && countryNameJa) {
-        const flagDescJa = await getFlagDescription(countryNameJa as string, null, 'ja');
+        const flagDescJa = await getFlagDescription(countryNameJa, null, 'ja');
         if (flagDescJa && flagDescJa.length > descriptionJa.length) {
           descriptionJa = flagDescJa;
           console.log(`  ✓ Flag description (ja): ${flagDescJa.length} chars`);
@@ -666,7 +848,7 @@ const main = async () => {
       }
 
       if ((!descriptionEn || descriptionEn.length < 50) && countryNameJa) {
-        const flagDescEn = await getFlagDescription(countryNameJa as string, countryNameEn as string, 'en');
+        const flagDescEn = await getFlagDescription(countryNameJa, countryNameEn as string, 'en');
         if (flagDescEn && flagDescEn.length > descriptionEn.length) {
           descriptionEn = flagDescEn;
           console.log(`  ✓ Flag description (en): ${flagDescEn.length} chars`);

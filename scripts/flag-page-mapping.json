@@ -1,0 +1,802 @@
+{
+  "アイスランド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%82%B9%E3%83%A9%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%82%B9%E3%83%A9%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アイルランド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%83%AB%E3%83%A9%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%83%AB%E3%83%A9%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アゼルバイジャン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BC%E3%83%AB%E3%83%90%E3%82%A4%E3%82%B8%E3%83%A3%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BC%E3%83%AB%E3%83%90%E3%82%A4%E3%82%B8%E3%83%A3%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アフガニスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%95%E3%82%AC%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%95%E3%82%AC%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アメリカ合衆国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E5%90%88%E8%A1%86%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E5%90%88%E8%A1%86%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アラブ首長国連邦": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A9%E3%83%96%E9%A6%96%E9%95%B7%E5%9B%BD%E9%80%A3%E9%82%A6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A9%E3%83%96%E9%A6%96%E9%95%B7%E5%9B%BD%E9%80%A3%E9%82%A6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アルジェリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%B8%E3%82%A7%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%B8%E3%82%A7%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アルゼンチン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%BC%E3%83%B3%E3%83%81%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%BC%E3%83%B3%E3%83%81%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アルバニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%90%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%90%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アルメニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%A1%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%A1%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アンゴラ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B4%E3%83%A9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B4%E3%83%A9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アンティグア・バーブーダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B0%E3%82%A2%E3%83%BB%E3%83%90%E3%83%BC%E3%83%96%E3%83%BC%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B0%E3%82%A2%E3%83%BB%E3%83%90%E3%83%BC%E3%83%96%E3%83%BC%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "アンドラ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%89%E3%83%A9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イエメン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%A8%E3%83%A1%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%A8%E3%83%A1%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イギリス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%AE%E3%83%AA%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%AE%E3%83%AA%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イスラエル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%B9%E3%83%A9%E3%82%A8%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%B9%E3%83%A9%E3%82%A8%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イタリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%BF%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%BF%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イラク": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A9%E3%82%AF",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A9%E3%82%AF%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "イラン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A9%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A9%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "インド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "インドネシア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%89%E3%83%8D%E3%82%B7%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%89%E3%83%8D%E3%82%B7%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ウガンダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%AC%E3%83%B3%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%AC%E3%83%B3%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ウクライナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%8A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%8A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ウズベキスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%BA%E3%83%99%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%BA%E3%83%99%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ウルグアイ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%AB%E3%82%B0%E3%82%A2%E3%82%A4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%AB%E3%82%B0%E3%82%A2%E3%82%A4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エクアドル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%A2%E3%83%89%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%A2%E3%83%89%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エジプト": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B8%E3%83%97%E3%83%88",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B8%E3%83%97%E3%83%88%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エストニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エスワティニ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%AF%E3%83%86%E3%82%A3%E3%83%8B",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%AF%E3%83%86%E3%82%A3%E3%83%8B%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エチオピア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%81%E3%82%AA%E3%83%94%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%81%E3%82%AA%E3%83%94%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エリトリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%AA%E3%83%88%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%AA%E3%83%88%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "エルサルバドル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%AB%E3%82%B5%E3%83%AB%E3%83%90%E3%83%89%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%AB%E3%82%B5%E3%83%AB%E3%83%90%E3%83%89%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "オーストラリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "オーストリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%82%B9%E3%83%88%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%82%B9%E3%83%88%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "オマーン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%9E%E3%83%BC%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%9E%E3%83%BC%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "オランダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%A9%E3%83%B3%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%A9%E3%83%B3%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ガーナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%BC%E3%83%8A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%BC%E3%83%8A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カーボベルデ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%9C%E3%83%99%E3%83%AB%E3%83%87",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%9C%E3%83%99%E3%83%AB%E3%83%87%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ガイアナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A2%E3%83%8A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A2%E3%83%8A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カザフスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%B6%E3%83%95%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%B6%E3%83%95%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カタール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%BF%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%BF%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カナダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%8A%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%8A%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ガボン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%9C%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%9C%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カメルーン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%A1%E3%83%AB%E3%83%BC%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%A1%E3%83%AB%E3%83%BC%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "韓国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ガンビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%B3%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%B3%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "カンボジア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%B3%E3%83%9C%E3%82%B8%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%B3%E3%83%9C%E3%82%B8%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "北朝鮮": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%AE%AE%E6%B0%91%E4%B8%BB%E4%B8%BB%E7%BE%A9%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%AE%AE%E6%B0%91%E4%B8%BB%E4%B8%BB%E7%BE%A9%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "北マケドニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E5%8C%97%E3%83%9E%E3%82%B1%E3%83%89%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E5%8C%97%E3%83%9E%E3%82%B1%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ギニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ギニアビサウ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%8B%E3%82%A2%E3%83%93%E3%82%B5%E3%82%A6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%8B%E3%82%A2%E3%83%93%E3%82%B5%E3%82%A6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "キプロス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%97%E3%83%AD%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%97%E3%83%AD%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "キューバ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%90",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%90%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ギリシャ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%AA%E3%82%B7%E3%83%A3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%AA%E3%82%B7%E3%83%A3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "キリバス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AA%E3%83%90%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AA%E3%83%90%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "キルギス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AB%E3%82%AE%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AB%E3%82%AE%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "グアテマラ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%82%A2%E3%83%86%E3%83%9E%E3%83%A9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%82%A2%E3%83%86%E3%83%9E%E3%83%A9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "クウェート": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%88",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%88%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "クック諸島": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%83%E3%82%AF%E8%AB%B8%E5%B3%B6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%83%E3%82%AF%E8%AB%B8%E5%B3%B6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "グレナダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%83%8A%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%83%8A%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "クロアチア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%A2%E3%83%81%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%A2%E3%83%81%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ケニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B1%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B1%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コートジボワール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%BC%E3%83%88%E3%82%B8%E3%83%9C%E3%83%AF%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%BC%E3%83%88%E3%82%B8%E3%83%9C%E3%83%AF%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コスタリカ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コソボ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%82%BD%E3%83%9C",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%82%BD%E3%83%9C%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コモロ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%A2%E3%83%AD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%A2%E3%83%AD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コロンビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%AD%E3%83%B3%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%AD%E3%83%B3%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コンゴ共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%82%B4%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%82%B4%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "コンゴ民主共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%82%B4%E6%B0%91%E4%B8%BB%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%82%B4%E6%B0%91%E4%B8%BB%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "サウジアラビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%82%B8%E3%82%A2%E3%83%A9%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%82%B8%E3%82%A2%E3%83%A9%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "サモア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%A2%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%A2%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "サントメ・プリンシペ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%88%E3%83%A1%E3%83%BB%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B7%E3%83%9A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%88%E3%83%A1%E3%83%BB%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B7%E3%83%9A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ザンビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B6%E3%83%B3%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B6%E3%83%B3%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "サンマリノ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%9E%E3%83%AA%E3%83%8E",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%9E%E3%83%AA%E3%83%8E%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "シエラレオネ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%A8%E3%83%A9%E3%83%AC%E3%82%AA%E3%83%8D",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%A8%E3%83%A9%E3%83%AC%E3%82%AA%E3%83%8D%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ジブチ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%96%E3%83%81",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%96%E3%83%81%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ジャマイカ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%9E%E3%82%A4%E3%82%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%9E%E3%82%A4%E3%82%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ジョージア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%E3%82%A2_(%E5%9B%BD)",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "シリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "シンガポール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%82%AC%E3%83%9D%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%82%AC%E3%83%9D%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ジンバブエ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%B3%E3%83%90%E3%83%96%E3%82%A8",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%B3%E3%83%90%E3%83%96%E3%82%A8%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スイス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%A4%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%A4%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スウェーデン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%87%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%87%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スーダン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%80%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%80%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スペイン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%9A%E3%82%A4%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%9A%E3%82%A4%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スリナム": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AA%E3%83%8A%E3%83%A0",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AA%E3%83%8A%E3%83%A0%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スリランカ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AA%E3%83%A9%E3%83%B3%E3%82%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AA%E3%83%A9%E3%83%B3%E3%82%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スロバキア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AD%E3%83%90%E3%82%AD%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AD%E3%83%90%E3%82%AD%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "スロベニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AD%E3%83%99%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%AD%E3%83%99%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セーシェル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%BC%E3%82%B7%E3%82%A7%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%BC%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "赤道ギニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E9%81%93%E3%82%AE%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E9%81%93%E3%82%AE%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セネガル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%8D%E3%82%AC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%8D%E3%82%AC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セルビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セントクリストファー・ネイビス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88%E3%83%95%E3%82%A1%E3%83%BC%E3%83%BB%E3%83%8D%E3%82%A4%E3%83%93%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88%E3%83%95%E3%82%A1%E3%83%BC%E3%83%BB%E3%83%8D%E3%82%A4%E3%83%93%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セントビンセント・グレナディーン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%83%93%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E3%83%BB%E3%82%B0%E3%83%AC%E3%83%8A%E3%83%87%E3%82%A3%E3%83%BC%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%83%93%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E3%83%BB%E3%82%B0%E3%83%AC%E3%83%8A%E3%83%87%E3%82%A3%E3%83%BC%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "セントルシア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%83%AB%E3%82%B7%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%88%E3%83%AB%E3%82%B7%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ソマリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%9E%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%9E%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ソロモン諸島": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%AD%E3%83%A2%E3%83%B3%E8%AB%B8%E5%B3%B6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%AD%E3%83%A2%E3%83%B3%E8%AB%B8%E5%B3%B6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "タイ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%A4%E7%8E%8B%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%A4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "タジキスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%B8%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%B8%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "タンザニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%83%B3%E3%82%B6%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%83%B3%E3%82%B6%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "チェコ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%82%A7%E3%82%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%82%A7%E3%82%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "チャド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "中央アフリカ共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E3%82%A2%E3%83%95%E3%83%AA%E3%82%AB%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E3%82%A2%E3%83%95%E3%83%AA%E3%82%AB%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "中華人民共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "中華民国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "チュニジア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A5%E3%83%8B%E3%82%B8%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A5%E3%83%8B%E3%82%B8%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "チリ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%AA",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%AA%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ツバル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%84%E3%83%90%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%84%E3%83%90%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "デンマーク": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%B3%E3%83%9E%E3%83%BC%E3%82%AF",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%B3%E3%83%9E%E3%83%BC%E3%82%AF%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ドイツ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%A4%E3%83%84",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%A4%E3%83%84%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "トーゴ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%BC%E3%82%B4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%BC%E3%82%B4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ドミニカ共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%9F%E3%83%8B%E3%82%AB%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%9F%E3%83%8B%E3%82%AB%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ドミニカ国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%9F%E3%83%8B%E3%82%AB%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%9F%E3%83%8B%E3%82%AB%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "トリニダード・トバゴ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AA%E3%83%8B%E3%83%80%E3%83%BC%E3%83%89%E3%83%BB%E3%83%88%E3%83%90%E3%82%B4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AA%E3%83%8B%E3%83%80%E3%83%BC%E3%83%89%E3%83%BB%E3%83%88%E3%83%90%E3%82%B4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "トルクメニスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AB%E3%82%AF%E3%83%A1%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AB%E3%82%AF%E3%83%A1%E3%83%8B%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "トルコ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AB%E3%82%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AB%E3%82%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "トンガ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%B3%E3%82%AC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%B3%E3%82%AC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ナイジェリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%A4%E3%82%B8%E3%82%A7%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%A4%E3%82%B8%E3%82%A7%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ナウル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%A6%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%A6%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ナミビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%83%9F%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%83%9F%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ニウエ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%A6%E3%82%A8",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%A6%E3%82%A8%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ニカラグア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%AB%E3%83%A9%E3%82%B0%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%AB%E3%83%A9%E3%82%B0%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ニジェール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "西サハラ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E3%82%B5%E3%83%8F%E3%83%A9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E3%82%B5%E3%83%8F%E3%83%A9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "日本": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ニュージーランド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B8%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B8%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ネパール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%83%91%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%83%91%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ノルウェー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%AB%E3%82%A6%E3%82%A7%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%AB%E3%82%A6%E3%82%A7%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バーレーン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%83%AC%E3%83%BC%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%83%AC%E3%83%BC%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ハイチ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%82%A4%E3%83%81",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%82%A4%E3%83%81%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パキスタン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%AD%E3%82%B9%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バチカン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%81%E3%82%AB%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%81%E3%82%AB%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パナマ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%8A%E3%83%9E",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%8A%E3%83%9E%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バヌアツ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%8C%E3%82%A2%E3%83%84",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%8C%E3%82%A2%E3%83%84%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バハマ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%8F%E3%83%9E",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%8F%E3%83%9E%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パプアニューギニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%97%E3%82%A2%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%AE%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%97%E3%82%A2%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%AE%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パラオ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%82%AA",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%82%AA%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パラグアイ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%82%B0%E3%82%A2%E3%82%A4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%82%B0%E3%82%A2%E3%82%A4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バルバドス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%AB%E3%83%90%E3%83%89%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%AB%E3%83%90%E3%83%89%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "パレスチナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%AC%E3%82%B9%E3%83%81%E3%83%8A%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%AC%E3%82%B9%E3%83%81%E3%83%8A%E3%81%AE%E6%97%97"
+  },
+  "ハンガリー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%B3%E3%82%AC%E3%83%AA%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%B3%E3%82%AC%E3%83%AA%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "バングラデシュ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%B3%E3%82%B0%E3%83%A9%E3%83%87%E3%82%B7%E3%83%A5",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%B3%E3%82%B0%E3%83%A9%E3%83%87%E3%82%B7%E3%83%A5%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "東ティモール": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E3%83%86%E3%82%A3%E3%83%A2%E3%83%BC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E3%83%86%E3%82%A3%E3%83%A2%E3%83%BC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "フィジー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%82%B8%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%82%B8%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "フィリピン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%AA%E3%83%94%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%AA%E3%83%94%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "フィンランド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%B3%E3%83%A9%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%B3%E3%83%A9%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブータン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%82%BF%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%82%BF%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブラジル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "フランス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブルガリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%82%AC%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%82%AC%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブルキナファソ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%82%AD%E3%83%8A%E3%83%95%E3%82%A1%E3%82%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%82%AD%E3%83%8A%E3%83%95%E3%82%A1%E3%82%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブルネイ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%83%8D%E3%82%A4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%83%8D%E3%82%A4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ブルンジ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%83%B3%E3%82%B8",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AB%E3%83%B3%E3%82%B8%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベトナム": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%88%E3%83%8A%E3%83%A0",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%88%E3%83%8A%E3%83%A0%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベナン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%8A%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%8A%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベネズエラ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%8D%E3%82%BA%E3%82%A8%E3%83%A9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%8D%E3%82%BA%E3%82%A8%E3%83%A9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベラルーシ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%A9%E3%83%AB%E3%83%BC%E3%82%B7",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%A9%E3%83%AB%E3%83%BC%E3%82%B7%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベリーズ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AA%E3%83%BC%E3%82%BA",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AA%E3%83%BC%E3%82%BA%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ペルー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9A%E3%83%AB%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9A%E3%83%AB%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ベルギー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%82%AE%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%82%AE%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ポーランド": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ボスニア・ヘルツェゴビナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%82%B9%E3%83%8B%E3%82%A2%E3%83%BB%E3%83%98%E3%83%AB%E3%83%84%E3%82%A7%E3%82%B4%E3%83%93%E3%83%8A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%82%B9%E3%83%8B%E3%82%A2%E3%83%BB%E3%83%98%E3%83%AB%E3%83%84%E3%82%A7%E3%82%B4%E3%83%93%E3%83%8A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ボツワナ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%84%E3%83%AF%E3%83%8A",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%84%E3%83%AF%E3%83%8A%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ボリビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%AA%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%AA%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ポルトガル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%AB%E3%83%88%E3%82%AC%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%AB%E3%83%88%E3%82%AC%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ホンジュラス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%B3%E3%82%B8%E3%83%A5%E3%83%A9%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%B3%E3%82%B8%E3%83%A5%E3%83%A9%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マーシャル諸島": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E8%AB%B8%E5%B3%B6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E8%AB%B8%E5%B3%B6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マダガスカル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%80%E3%82%AC%E3%82%B9%E3%82%AB%E3%83%AB",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%80%E3%82%AC%E3%82%B9%E3%82%AB%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マラウイ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%A9%E3%82%A6%E3%82%A4",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%A9%E3%82%A6%E3%82%A4%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マリ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AA%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AA%E5%85%B1%E5%92%8C%E5%9B%BD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マルタ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%82%BF",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%82%BF%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "マレーシア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AC%E3%83%BC%E3%82%B7%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AC%E3%83%BC%E3%82%B7%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ミクロネシア連邦": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%82%AF%E3%83%AD%E3%83%8D%E3%82%B7%E3%82%A2%E9%80%A3%E9%82%A6",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%82%AF%E3%83%AD%E3%83%8D%E3%82%B7%E3%82%A2%E9%80%A3%E9%82%A6%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "南アフリカ共和国": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E5%8D%97%E3%82%A2%E3%83%95%E3%83%AA%E3%82%AB%E5%85%B1%E5%92%8C%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E5%8D%97%E3%82%A2%E3%83%95%E3%83%AA%E3%82%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "南スーダン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E5%8D%97%E3%82%B9%E3%83%BC%E3%83%80%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E5%8D%97%E3%82%B9%E3%83%BC%E3%83%80%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ミャンマー": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%A3%E3%83%B3%E3%83%9E%E3%83%BC",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%A3%E3%83%B3%E3%83%9E%E3%83%BC%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "メキシコ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%AD%E3%82%B7%E3%82%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%AD%E3%82%B7%E3%82%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モーリシャス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%BC%E3%83%AA%E3%82%B7%E3%83%A3%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%BC%E3%83%AA%E3%82%B7%E3%83%A3%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モーリタニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%BC%E3%83%AA%E3%82%BF%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%BC%E3%83%AA%E3%82%BF%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モザンビーク": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B6%E3%83%B3%E3%83%93%E3%83%BC%E3%82%AF",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B6%E3%83%B3%E3%83%93%E3%83%BC%E3%82%AF%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モナコ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%8A%E3%82%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%8A%E3%82%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モルディブ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AB%E3%83%87%E3%82%A3%E3%83%96",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AB%E3%83%87%E3%82%A3%E3%83%96%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モルドバ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AB%E3%83%89%E3%83%90",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AB%E3%83%89%E3%83%90%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モロッコ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AD%E3%83%83%E3%82%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AD%E3%83%83%E3%82%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モンゴル": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%82%B4%E3%83%AB%E5%9B%BD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%82%B4%E3%83%AB%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "モンテネグロ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%83%8D%E3%82%B0%E3%83%AD",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%83%8D%E3%82%B0%E3%83%AD%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ヨルダン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A8%E3%83%AB%E3%83%80%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A8%E3%83%AB%E3%83%80%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ラオス": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%AA%E3%82%B9",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%AA%E3%82%B9%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ラトビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%88%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%88%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "リトアニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%82%A2%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%82%A2%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "リビア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%93%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%93%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "リヒテンシュタイン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%92%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A5%E3%82%BF%E3%82%A4%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%92%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A5%E3%82%BF%E3%82%A4%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "リベリア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%99%E3%83%AA%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%99%E3%83%AA%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ルーマニア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%83%9E%E3%83%8B%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%83%9E%E3%83%8B%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ルクセンブルク": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%82%AF%E3%82%BB%E3%83%B3%E3%83%96%E3%83%AB%E3%82%AF",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%82%AF%E3%82%BB%E3%83%B3%E3%83%96%E3%83%AB%E3%82%AF%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ルワンダ": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%AF%E3%83%B3%E3%83%80",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%AF%E3%83%B3%E3%83%80%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "レソト": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%BD%E3%83%88",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%BD%E3%83%88%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "レバノン": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%90%E3%83%8E%E3%83%B3",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%90%E3%83%8E%E3%83%B3%E3%81%AE%E5%9B%BD%E6%97%97"
+  },
+  "ロシア": {
+    "countryPage": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%B7%E3%82%A2",
+    "flagPage": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%B7%E3%82%A2%E3%81%AE%E5%9B%BD%E6%97%97"
+  }
+}
