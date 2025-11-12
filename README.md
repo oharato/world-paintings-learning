@@ -267,8 +267,25 @@ https://[deployment-id].world-flags-learning.pages.dev
 #### CI/CDパイプライン
 1. **プルリクエスト時**: 自動的にテストを実行（マージ前の品質チェック）
 2. **main/master ブランチへのマージ時**: テスト成功後に自動デプロイ
+3. **国データの自動更新**: 毎週日曜日に自動実行、または手動で実行可能
 
 このワークフローにより、コードの品質を保ちながら安全にデプロイできます。
+
+#### 国データの自動更新
+
+GitHub Actions により、Wikipedia と Wikidata から国データを定期的に更新できます：
+
+**自動実行**: 毎週日曜日 0:00 (UTC) に自動的に実行
+
+**手動実行**:
+1. GitHubリポジトリの **Actions** タブを開く
+2. **Update Country Data** ワークフローを選択
+3. **Run workflow** ボタンをクリック
+
+このワークフローは以下を実行します：
+- `npm run batch:create-data` による国データの生成
+- `public/` ディレクトリの変更を自動コミット（コミットメッセージ: "update by gha on {日時}"）
+- 変更がある場合、自動的に Cloudflare Pages へデプロイ
 
 #### 初回設定（GitHub Secrets）
 
