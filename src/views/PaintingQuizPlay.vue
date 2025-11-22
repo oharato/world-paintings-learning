@@ -68,7 +68,7 @@ onMounted(async () => {
   }
 
   if (quizStore.questions.length === 0) {
-    router.push('/quiz');
+    router.push('/painting-quiz');
     return;
   }
 
@@ -87,7 +87,7 @@ watch(
   (newEndTime) => {
     if (newEndTime > 0) {
       clearInterval(timer);
-      router.push('/quiz/result');
+      router.push('/painting-quiz/result');
     }
   }
 );
@@ -212,7 +212,7 @@ const canSubmit = () => {
     
     <div v-else class="text-center py-10">
       <p>クイズデータがありません</p>
-      <AppButton variant="primary" @click="router.push('/quiz')" class="mt-4">
+      <AppButton variant="primary" @click="router.push('/painting-quiz')" class="mt-4">
         クイズ設定に戻る
       </AppButton>
     </div>
