@@ -1,0 +1,142 @@
+[
+  {
+    "id": "met_436532",
+    "name": "The Starry Night",
+    "artist": "Vincent van Gogh",
+    "year": "1889",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_436532.jpg",
+    "description": "MoMA | Department of Painting and Sculpture | Painting",
+    "culture": "Dutch"
+  },
+  {
+    "id": "met_436533",
+    "name": "Sunflowers",
+    "artist": "Vincent van Gogh",
+    "year": "1888",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_436533.jpg",
+    "description": "National Gallery, London | European Paintings",
+    "culture": "Dutch"
+  },
+  {
+    "id": "met_437121",
+    "name": "Water Lilies",
+    "artist": "Claude Monet",
+    "year": "1919",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_437121.jpg",
+    "description": "The Metropolitan Museum of Art | European Paintings",
+    "culture": "French"
+  },
+  {
+    "id": "met_438815",
+    "name": "Impression, Sunrise",
+    "artist": "Claude Monet",
+    "year": "1872",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_438815.jpg",
+    "description": "Musée Marmottan Monet | Impressionist Painting",
+    "culture": "French"
+  },
+  {
+    "id": "met_459055",
+    "name": "Bal du moulin de la Galette",
+    "artist": "Pierre-Auguste Renoir",
+    "year": "1876",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_459055.jpg",
+    "description": "Musée d'Orsay | Impressionist Painting",
+    "culture": "French"
+  },
+  {
+    "id": "met_459056",
+    "name": "Luncheon of the Boating Party",
+    "artist": "Pierre-Auguste Renoir",
+    "year": "1881",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_459056.jpg",
+    "description": "The Phillips Collection | Impressionist Painting",
+    "culture": "French"
+  },
+  {
+    "id": "met_438533",
+    "name": "The Ballet Class",
+    "artist": "Edgar Degas",
+    "year": "1879",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_438533.jpg",
+    "description": "Musée d'Orsay | Impressionist Painting",
+    "culture": "French"
+  },
+  {
+    "id": "met_447802",
+    "name": "Mont Sainte-Victoire",
+    "artist": "Paul Cézanne",
+    "year": "1887",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_447802.jpg",
+    "description": "The Courtauld Institute of Art | Post-Impressionism",
+    "culture": "French"
+  },
+  {
+    "id": "met_437644",
+    "name": "Girl with a Pearl Earring",
+    "artist": "Johannes Vermeer",
+    "year": "1665",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_437644.jpg",
+    "description": "Mauritshuis | Dutch Golden Age",
+    "culture": "Dutch"
+  },
+  {
+    "id": "met_437102",
+    "name": "The Night Watch",
+    "artist": "Rembrandt van Rijn",
+    "year": "1642",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_437102.jpg",
+    "description": "Rijksmuseum Amsterdam | Dutch Golden Age",
+    "culture": "Dutch"
+  },
+  {
+    "id": "met_490116",
+    "name": "Guernica",
+    "artist": "Pablo Picasso",
+    "year": "1937",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_490116.jpg",
+    "description": "Museo Reina Sofía | Cubism",
+    "culture": "Spanish"
+  },
+  {
+    "id": "met_436963",
+    "name": "Tahitian Women",
+    "artist": "Paul Gauguin",
+    "year": "1891",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_436963.jpg",
+    "description": "Musée d'Orsay | Post-Impressionism",
+    "culture": "French"
+  },
+  {
+    "id": "met_438777",
+    "name": "The Luncheon on the Grass",
+    "artist": "Édouard Manet",
+    "year": "1863",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_438777.jpg",
+    "description": "Musée d'Orsay | Realism",
+    "culture": "French"
+  },
+  {
+    "id": "met_438778",
+    "name": "Olympia",
+    "artist": "Édouard Manet",
+    "year": "1863",
+    "medium": "Oil on canvas",
+    "image_url": "/paintings/met_438778.jpg",
+    "description": "Musée d'Orsay | Realism",
+    "culture": "French"
+  }
+]

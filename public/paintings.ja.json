@@ -1,0 +1,142 @@
+[
+  {
+    "id": "met_436532",
+    "name": "星月夜",
+    "artist": "フィンセント・ファン・ゴッホ",
+    "year": "1889",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_436532.jpg",
+    "description": "MoMA | 絵画・彫刻部門 | 絵画",
+    "culture": "オランダ"
+  },
+  {
+    "id": "met_436533",
+    "name": "ひまわり",
+    "artist": "フィンセント・ファン・ゴッホ",
+    "year": "1888",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_436533.jpg",
+    "description": "ロンドン・ナショナル・ギャラリー | ヨーロッパ絵画",
+    "culture": "オランダ"
+  },
+  {
+    "id": "met_437121",
+    "name": "睡蓮",
+    "artist": "クロード・モネ",
+    "year": "1919",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_437121.jpg",
+    "description": "メトロポリタン美術館 | ヨーロッパ絵画",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_438815",
+    "name": "印象・日の出",
+    "artist": "クロード・モネ",
+    "year": "1872",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_438815.jpg",
+    "description": "マルモッタン・モネ美術館 | 印象派絵画",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_459055",
+    "name": "ムーラン・ド・ラ・ギャレットの舞踏会",
+    "artist": "ピエール＝オーギュスト・ルノワール",
+    "year": "1876",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_459055.jpg",
+    "description": "オルセー美術館 | 印象派絵画",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_459056",
+    "name": "舟遊びをする人々の昼食",
+    "artist": "ピエール＝オーギュスト・ルノワール",
+    "year": "1881",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_459056.jpg",
+    "description": "フィリップス・コレクション | 印象派絵画",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_438533",
+    "name": "踊り子",
+    "artist": "エドガー・ドガ",
+    "year": "1879",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_438533.jpg",
+    "description": "オルセー美術館 | 印象派絵画",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_447802",
+    "name": "サント＝ヴィクトワール山",
+    "artist": "ポール・セザンヌ",
+    "year": "1887",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_447802.jpg",
+    "description": "コートールド美術館 | ポスト印象派",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_437644",
+    "name": "真珠の耳飾りの少女",
+    "artist": "ヨハネス・フェルメール",
+    "year": "1665",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_437644.jpg",
+    "description": "マウリッツハイス美術館 | オランダ黄金時代",
+    "culture": "オランダ"
+  },
+  {
+    "id": "met_437102",
+    "name": "夜警",
+    "artist": "レンブラント・ファン・レイン",
+    "year": "1642",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_437102.jpg",
+    "description": "アムステルダム国立美術館 | オランダ黄金時代",
+    "culture": "オランダ"
+  },
+  {
+    "id": "met_490116",
+    "name": "ゲルニカ",
+    "artist": "パブロ・ピカソ",
+    "year": "1937",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_490116.jpg",
+    "description": "ソフィア王妃芸術センター | キュビスム",
+    "culture": "スペイン"
+  },
+  {
+    "id": "met_436963",
+    "name": "タヒチの女たち",
+    "artist": "ポール・ゴーギャン",
+    "year": "1891",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_436963.jpg",
+    "description": "オルセー美術館 | ポスト印象派",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_438777",
+    "name": "草上の昼食",
+    "artist": "エドゥアール・マネ",
+    "year": "1863",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_438777.jpg",
+    "description": "オルセー美術館 | 写実主義",
+    "culture": "フランス"
+  },
+  {
+    "id": "met_438778",
+    "name": "オランピア",
+    "artist": "エドゥアール・マネ",
+    "year": "1863",
+    "medium": "キャンバスに油彩",
+    "image_url": "/paintings/met_438778.jpg",
+    "description": "オルセー美術館 | 写実主義",
+    "culture": "フランス"
+  }
+]
