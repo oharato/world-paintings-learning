@@ -32,6 +32,21 @@ const routes = [
     name: 'Study',
     component: () => import('../views/Study.vue'),
   },
+  {
+    path: '/painting-quiz',
+    name: 'PaintingQuizSetup',
+    component: () => import('../views/PaintingQuizSetup.vue'),
+  },
+  {
+    path: '/painting-quiz/play',
+    name: 'PaintingQuizPlay',
+    component: () => import('../views/PaintingQuizPlay.vue'),
+  },
+  {
+    path: '/painting-quiz/result',
+    name: 'PaintingQuizResult',
+    component: () => import('../views/PaintingQuizResult.vue'),
+  },
 ];
 
 const router = createRouter({

@@ -13,6 +13,18 @@ const { t } = useTranslation();
     </div>
 
     <h1 class="text-4xl font-bold my-8">{{ t.home.title }}</h1>
+    
+    <!-- 名画クイズセクション -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border-2 border-purple-200">
+      <h2 class="text-2xl font-bold mb-2 text-purple-800">🎨 NEW! 名画クイズ</h2>
+      <p class="text-sm text-gray-700 mb-4">有名な絵画の作者とタイトルを当てよう！</p>
+      <router-link to="/painting-quiz" class="block w-full max-w-sm mx-auto">
+        <AppButton variant="purple" full-width>
+          名画クイズに挑戦
+        </AppButton>
+      </router-link>
+    </div>
+
     <div class="space-y-4">
       <router-link to="/quiz" class="block w-full max-w-sm mx-auto">
         <AppButton variant="primary" full-width>
