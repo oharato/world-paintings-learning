@@ -75,7 +75,69 @@
     ]
     ```
 
-### 2.2. ランキングデータ
+### 2.2. 絵画データ生成（The Metropolitan Museum of Art）
+
+※ 本プロジェクトでは著名な絵画を学習データとして利用するため、The Metropolitan Museum of Art (The Met) の Collection API を利用して絵画データと画像を取得するバッチ処理を用意しています。
+
+概要:
+
+- **スクリプト**: `scripts/fetch-paintings.mts`
+- **出力**: `public/paintings.ja.json`, `public/paintings.en.json` として日本語/英語のメタデータを生成し、画像は `public/paintings/` に保存します。
+- **主な処理内容**:
+  1. 事前定義した著名画家リスト (`FAMOUS_ARTISTS` 配列) で The Met API を検索し、該当オブジェクトIDを取得します。
+  2. オブジェクトの詳細を取得し、絵画（painting）に該当するものをフィルタリングします。
+  3. 画像を取得してローカルに保存する前に、高圧縮フォーマット（WebP）へ変換し、サイズ目標を満たすよう圧縮／リサイズを行います（元画像はリポジトリに残しません）。
+  4. 作品の日本語情報はまず**Wikidata → ja.wikipedia の sitelink → ja.wikipedia の要約**を試み、見つからなければ Wikidata の labels/descriptions をフォールバックで使います。検索や取得結果は `scripts/wiki-cache.json` にキャッシュされます。
+  5. 画像がローカルに既にある場合はダウンロードをスキップし、JSONに未登録なら追記します（インクリメンタル更新）。
+
+安全対策・調整項目:
+
+- **API レート制御**: The Met API と Wikidata/Wikipedia の両方に対してスクリプト内でレート制御を実装しています。環境変数で調整可能です。
+  - `MET_RATE_LIMIT_RPS`（デフォルト: `2`）: Met API のリクエスト/秒
+  - `WIKI_RATE_LIMIT_RPS`（デフォルト: `1`）: Wikidata / Wikipedia のリクエスト/秒
+
+- **画像圧縮 / 変換設定**:
+  - `USE_WEBP`（デフォルト: `true`）: WebP 変換を行うか
+  - `WEBP_QUALITY`（デフォルト: `80`）: WebP 変換時の初期品質
+  - `MAX_IMAGE_BYTES`（デフォルト: `500*1024`）: 目標バイト数（例: 500KB）
+
+- **キャッシュ**: Wikidata / Wikipedia の検索・取得結果は `scripts/wiki-cache.json` に保存して再利用するため、API 呼び出しを節約します。
+
+運用上の注意:
+
+- `sharp`（画像変換ライブラリ）を利用しているため、依存インストール時に libvips 等のネイティブライブラリが必要になることがあります。CI / 実行環境にインストールされていない場合は追加のパッケージインストールが必要です。
+- 生成される画像は WebP 形式で JSON の `image_url` は `/paintings/<id>.webp` を指すようになります。フロント側は WebP 対応ブラウザが大半のため問題ない想定ですが、必要なら `<picture>` 要素でフォールバック実装を行ってください。
+- 元画像はリポジトリに残さない方針のため、変換後に元ファイルは削除されます。リポジトリ容量を超えない管理が目的です。
+
+実行例:
+
+```bash
+# 依存のインストール（初回のみ）
+npm install
+
+# デフォルト実行（Met=2rps, Wiki=1rps, 500KB）
+npx tsx scripts/fetch-paintings.mts
+
+# 保守的に実行（Met=1rps）
+MET_RATE_LIMIT_RPS=1 WIKI_RATE_LIMIT_RPS=1 npx tsx scripts/fetch-paintings.mts
+
+# 画像閾値を 300KB に変更して実行
+MAX_IMAGE_BYTES=$((300*1024)) npx tsx scripts/fetch-paintings.mts
+```
+
+生成物:
+
+- `public/paintings.ja.json` / `public/paintings.en.json` - 取得したメタ情報（作品ID, タイトル, 作者（日本語/英語）, 年代, medium, image_url, description, culture など）
+- `public/paintings/*.webp` - 変換・圧縮済み画像
+- `scripts/wiki-cache.json` - Wikidata/ja.wikipedia のキャッシュ
+
+テスト実行（推奨）:
+
+- 実際にフルバッチを走らせる前に、`scripts/fetch-paintings.mts` 内の `limitedIds = objectIds.slice(0, N)` の `N` を小さく（例 5）にして短時間で動作確認することを推奨します。これでレート制御、変換処理、JSON更新フローを確認できます。
+
+***
+
+### 2.3. ランキングデータ
 *   **保存先**: **Cloudflare D1**
 *   **理由**:
     *   デプロイ先である Cloudflare 環境でネイティブに動作するサーバーレスSQLデータベースであるため。
