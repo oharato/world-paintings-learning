@@ -15,7 +15,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "batch:create-data": "tsx scripts/generate-data.mts",
+    "batch:create-data": "tsx scripts/fetch-paintings.mts",
     "batch:create-list": "tsx scripts/extract-flag-page-names.mts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
@@ -29,6 +29,7 @@
     "hono": "^4.10.4",
     "node-fetch": "^3.3.2",
     "pinia": "^3.0.4",
+    "sharp": "^0.32.6",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",
     "zod": "^3.25.76"

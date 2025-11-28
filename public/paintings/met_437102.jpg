@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#8B4513"/>
+  <rect x="50" y="50" width="700" height="500" fill="white" opacity="0.9"/>
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#333">夜警</text>
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#666">レンブラント・ファン・レイン</text>
+  <text x="400" y="250" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#999">1642</text>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999">キャンバスに油彩</text>
+  <rect x="300" y="350" width="200" height="150" fill="#8B4513" opacity="0.3" rx="10"/>
+  <text x="400" y="435" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666">Placeholder Image</text>
+</svg>
