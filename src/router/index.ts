@@ -47,6 +47,11 @@ const routes = [
     name: 'PaintingQuizResult',
     component: () => import('../views/PaintingQuizResult.vue'),
   },
+  {
+    path: '/painting-study',
+    name: 'PaintingStudy',
+    component: () => import('../views/PaintingStudy.vue'),
+  },
 ];
 
 const router = createRouter({
