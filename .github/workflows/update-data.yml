@@ -2,8 +2,8 @@ name: Update Country Data
 
 on:
   workflow_dispatch: # 手動実行を許可
-  schedule:
-    - cron: '0 0 * * 0' # 毎週日曜日の0時に実行（UTC）
+  # schedule:
+  #   - cron: '0 0 * * 0' # 毎週日曜日の0時に実行（UTC）
 
 jobs:
   update-data:
